@@ -67,7 +67,6 @@ export class Otp {
               this.router.navigate(['/forgetPassword']);
             }else{
             this.router.navigate(['/login']);
-
             }
             
          },error:(err)=>{

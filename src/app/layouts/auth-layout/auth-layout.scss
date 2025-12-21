@@ -6,13 +6,9 @@
   background-position: top right;
   position: relative;
   min-height: 100vh;
-
   &::before {
-
     // background-color: rgba(255, 255, 255, 0.8);
     background: url('../../../../public/images/line.png');
-
-
     content: "";
     position: absolute;
     top: 0;
@@ -25,6 +21,13 @@
     background-position: top right;
     height: 100%;
   }
+ @media screen  and (max-width:768px){
+      background: transparent;
+      min-height: 100%;
+      &::before{
+        content: unset;
+      }
+  }
 
 }
 
@@ -32,5 +35,9 @@
   max-width: 50%;
   margin: auto 40px;
   padding: 40px;
-
+ @media screen  and (max-width:768px){
+     max-width: 100%;
+  margin: auto 20px;
+  padding: 20px;
+  }
 }

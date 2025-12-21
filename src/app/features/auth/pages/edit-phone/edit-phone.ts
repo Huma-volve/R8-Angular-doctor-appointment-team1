@@ -30,7 +30,7 @@ export class EditPhone {
           console.log('Profile updated successfully:', res);
           this.resultMessage = res.message;
       this.loading = false;
-       this.router.navigate(['/otp']);
+    
        this.router.navigate(['/otp'], {
   state: { from: 'editPhone' }
 });

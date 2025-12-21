@@ -1,0 +1,114 @@
+ <div class="side-menu h-100">
+      <div>
+        <div class="side-action-wrapper">
+          <div class="side-actions py-3">
+            <p>{{chatTitle}}</p>
+            <div class="dropdown">
+              <button
+                class="dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="true"
+              >
+                <i class="fa-solid fa-sliders"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" (click)="getAllConversations()">
+                    <span class="mx-2"><i class="fa-solid fa-message"></i></span> All Chats
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" (click)="getFavouriteList()">
+                    <span class="mx-2"><i class="fa-solid fa-heart"></i></span> Favourite
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" (click)="getArchiveList()">
+                    <span class="mx-2"><i class="fa-solid fa-download"></i></span> Archive
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="side-chat-list">
+          <div class="w-100">
+            <div class="search-input-wrapper py-2 px-4 w-100">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                class="form-control w-100 bg-danger"
+                placeholder="Search for chat, doctor"
+                aria-label="Search"
+                aria-describedby="visible-addon"
+                [(ngModel)]="searchWord"
+                (keyup)="OnSearch(searchWord)"
+              />
+            </div>
+            <div class="chats-list-wrapper">
+              @for (chat of CoversationsList; track $index) {
+              <div class="row chat-information mx-4 mt-3 pt-2">
+                <div class="col-md-2">
+                  <div class="chat-image">
+                    <img
+                      src="/images/e8670c7313824a4684f3b83575c7ef5e0a4dd858.jpg"
+                      alt=""
+                      class="message-image me-2"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="text-start mx-2">
+                    <h6 class="message-reciever">{{ chat.other_user.name }}</h6>
+                    <p class="message-chat">
+                      {{
+                        chat.last_message?.body && chat.last_message.body.length > 20
+                          ? (chat.last_message.body | slice : 0 : 20) + ' ..... '
+                          : chat.last_message?.body
+                      }}
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="text-end">
+                    <span class="message-time">{{
+                      chat.last_message?.created_at | date : 'h:mm a'
+                    }}</span>
+                    <span
+                      class="message-number ms-auto mt-2"
+                      [class.d-none]="(chat?.unread_count ?? 0) === 0"
+                      >{{ chat.unread_count }}</span
+                    >
+                  </div>
+                </div>
+               
+                <div class="chat-options">
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" (click)="MarkAsRead(chat.last_message.conversation_id)">Mark As Read</a></li>
+                      <li><a class="dropdown-item" (click)="toggleFavourite(chat.last_message.conversation_id , chat.is_favorite )">{{chat.is_favorite? 'Mark as Unfavourite' : 'Mark as Favourite'}}</a></li>
+                      <li><a class="dropdown-item" (click)="toggleArchive(chat.last_message.conversation_id ,chat.is_archived)">{{chat.is_archived  ? 'Mark as UnArchive' : 'Mark as Archive'}}</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              }
+                @if(CoversationsList.length == 0) {
+                <div class="text-center p-3">
+                  <img src="images/No data.gif" alt="" class="w-75">
+                  <p class="text-danger small fw-bolder">No Data to Display</p>
+                </div>
+                }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

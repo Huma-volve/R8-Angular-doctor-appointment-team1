@@ -1,0 +1,145 @@
+.container-fluid {
+  height: 90vh !important;
+}
+
+.chat-wrapper {
+  margin-left: 50px;
+  height: 90vh;
+}
+
+#chat .chat-ser {
+  border: 1px solid #99a2ab;
+
+  border-radius: 20px 0 0 0;
+}
+.chat-det {
+  border: 1px solid #99a2ab;
+  
+}
+
+#chat .chat-ser .head {
+  border-bottom: 1px solid #99a2ab;
+  height: 61px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #f5f6f7;
+  border-radius: 10px;
+  padding: 12px 18px;
+}
+
+.search-icon {
+  font-size: 18px;
+  color: #6d7379;
+  margin-right: 12px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: #6d7379;
+}
+
+.search-box input::placeholder {
+  color: #99a2ab;
+}
+
+.all-chat {
+  padding: 15px;
+  height: 70vh;
+  overflow-y: auto;
+}
+
+.chat-det .head {
+  border-bottom: 1px solid #99a2ab;
+  height: 61px;
+}
+
+
+.inner-chat-del {
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.head {
+    flex-shrink: 0; 
+    border-bottom: 1px solid #eee;
+    padding: 10px 15px;
+}
+
+.inner-chat-del .body{
+flex-grow: 1; 
+    overflow-y: auto; 
+    background-color: #f9f9f9; 
+}
+
+.footer-chat {
+    flex-shrink: 0; 
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.chat-input-container {
+  align-items: center;
+
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 8px 15px;
+  flex-grow: 1;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.chat-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  flex-grow: 1;
+  font-size: 16px;
+  color: #333;
+}
+
+.input-icons {
+  display: flex;
+  gap: 15px;
+  color: #555;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #444;
+}
+
+.mic-btn {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.3s;
+}
+
+.mic-btn:hover {
+  background-color: #1557b0;
+}
+
+// ===== chat body ======

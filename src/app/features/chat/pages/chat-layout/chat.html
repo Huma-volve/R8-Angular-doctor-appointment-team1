@@ -1,0 +1,40 @@
+<section class="container-fluid py-2 mt-5">
+  <div class="row chat-wrapper ps-5">
+    <div class="col-3  pe-0">
+            <app-chat-list></app-chat-list>
+    </div>
+    <div class="chat-det col-9  p-0 bg-secondary">
+      <div class="inner-chat-del d-flex flex-column">
+        <div class="head">
+          <app-title-chat></app-title-chat>
+        </div>
+        <div class="body bg-white flex-grow-1">
+          <app-body-chat></app-body-chat>
+        </div>
+        <div class="footer-chat">
+          <div class="chat-input-container row px-2">
+            <div class="input-wrapper col-11">
+              <input
+                #messageInput
+                type="text"
+                placeholder="Message"
+                class="chat-input"
+                (keydown.enter)="send(messageInput.value); messageInput.value = ''"
+              />
+              <div class="input-icons">
+                <button class="icon-btn"><i class="fas fa-paperclip"></i></button>
+                <button class="icon-btn"><i class="fas fa-camera"></i></button>
+              </div>
+            </div>
+            <button
+              class="mic-btn col-1 p-0"
+              (click)="send(messageInput.value); messageInput.value = ''"
+            >
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

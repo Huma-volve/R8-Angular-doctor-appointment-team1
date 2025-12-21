@@ -9,17 +9,25 @@ import { Chat } from '../../models/chat';
 })
 export class BodyChat implements OnInit {
   private readonly chatService = inject(Chats);
-
+  chatId:any
   chat: Chat[] = [];
   ngOnInit(): void {
     this.chatService.messages$.subscribe((data) => {
       this.chat = data;
     });
+    
     this.getChat();
+    this.chatService.selectedChatId$.subscribe(converstionId => {
+    if (converstionId) {
+        this.chatId = converstionId
+        console.log('id from body' , converstionId)
+        this.getChat()
+    }
+  });
   }
 
   getChat() {
-    this.chatService.getCahtHistory('29').subscribe({
+    this.chatService.getCahtHistory(this.chatId).subscribe({
       next: (res: any) => {
         console.log(res.data);
         this.chat = res.data.sort((a: any, b: any) => a.id - b.id);

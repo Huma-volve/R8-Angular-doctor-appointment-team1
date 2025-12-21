@@ -121,4 +121,10 @@ MarkAsRead(chatId:any){
     error:(err)=>{console.log(err)},
   })
 }
+
+
+selectChat(chatId: number) {
+  this._Chat.selectedChatId$.next(chatId);
+  console.log(chatId)
+}
 }

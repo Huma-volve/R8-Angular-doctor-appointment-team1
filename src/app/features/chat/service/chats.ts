@@ -10,7 +10,7 @@ export class Chats {
   private readonly httpClient = inject(HttpClient);
 
   private messagesSubject = new BehaviorSubject<any[]>([]);
-
+  selectedChatId$ = new BehaviorSubject<number | null>(null);
   messages$ = this.messagesSubject.asObservable();
   GettAllConversation(): Observable<any> {
     return this._HttpClient.get('conversations');

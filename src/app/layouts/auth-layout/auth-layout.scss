@@ -1,0 +1,43 @@
+.auth-layout {
+  font-family: "Montserrat", sans-serif;
+  background: #fff url("../../../../public/images/bgVector.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top right;
+  position: relative;
+  min-height: 100vh;
+  &::before {
+    // background-color: rgba(255, 255, 255, 0.8);
+    background: url('../../../../public/images/line.png');
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 1%;
+    width: 40%;
+    height: 100%;
+    z-index: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top right;
+    height: 100%;
+  }
+ @media screen  and (max-width:768px){
+      background: transparent;
+      min-height: 100%;
+      &::before{
+        content: unset;
+      }
+  }
+
+}
+
+.auth-section {
+  max-width: 50%;
+  margin: auto 40px;
+  padding: 40px;
+ @media screen  and (max-width:768px){
+     max-width: 100%;
+  margin: auto 20px;
+  padding: 20px;
+  }
+}

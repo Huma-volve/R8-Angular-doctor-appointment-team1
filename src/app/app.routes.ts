@@ -10,6 +10,22 @@ import { Routes } from '@angular/router';
 import { Dcard } from './components/dcard/dcard';
 import { Dmap } from './components/dmap/dmap';
 
+export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'appointments',
+    pathMatch: 'full',
+  },
+  {
+    path: 'appointments',
+    loadChildren: () =>
+      import('./features/appointment/appointment.routes')
+        .then(m => m.APPOINTMENT_ROUTES),
+  },
+  {
+    path: '**',
+    redirectTo: 'appointments',
+  },
 
 export const routes: Routes = [
 {path: 'dcard', component: Dcard},

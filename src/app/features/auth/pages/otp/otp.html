@@ -1,0 +1,53 @@
+<section class="register-form otp">
+     <app-form-header [formTitle]="'Code Verification'" [formDesc]="'Code has been send to your phone number'"></app-form-header>
+      <p class="text-primary text-center">Check your phone number</p>
+    <div class="content otp">
+    <p class="otp-desc">Enter the 4-digit code sent to your phone</p>
+
+    <form  #optform="ngForm" (ngSubmit)="verifyOtp()">
+      <div class="code-inputs">
+
+      <input type="text" maxlength="1" inputmode="numeric" class="otp-input" aria-label="digit 1"  [(ngModel)]="otp1" name="otp1" required>
+      <input type="text" maxlength="1" inputmode="numeric" class="otp-input" aria-label="digit 2" [(ngModel)]="otp2" name="otp2" required>
+      <input type="text" maxlength="1" inputmode="numeric" class="otp-input" aria-label="digit 3" [(ngModel)]="otp3" name="otp3" required>
+      <input type="text" maxlength="1" inputmode="numeric" class="otp-input" aria-label="digit 4" [(ngModel)]="otp4" name="otp4" required>
+      </div>
+       @if (statusMessage) {
+          <p class="text-danger text-center">{{ statusMessage }}</p>
+       }
+       @if(isCorrectOtp)
+       {
+        <ng-container>
+           <p class="otp-desc">resend opt code in <span class="text-primary px-1">{{timer}}</span>s</p>
+        </ng-container>
+       }
+     @if(!isCorrectOtp) {
+     <ng-container>
+        <div class="otp-actions">
+      <a class="link" href="#">Resend</a>
+      <span class="muted">Or</span>
+      <a href="/auth/register" class="link">Enter another phone number</a>
+    </div>
+     </ng-container>
+     }
+        
+      <button type="submit" class="btn btn-primary btn-block w-100" [disabled]="!isOtpComplete()">
+         @if (!loading) {
+      <span>verify</span>
+    }@else {
+      <span>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      verfiy otp ..
+    </span>
+    }
+    
+      </button>
+
+    </form>
+
+    <!-- Hidden error message by default; toggle with JS if needed -->
+ 
+    
+
+  </div>
+</section>

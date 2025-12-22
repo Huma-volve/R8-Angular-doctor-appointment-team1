@@ -1,5 +1,3 @@
-import { DoctorList } from './features/doctors/pages/doctor-list/doctor-list';
-import { AdminLayout } from './layouts/admin-layout/admin-layout';
 import { ForgetPassword } from './features/auth/pages/forget-password/forget-password';
 import { EditPhone } from './features/auth/pages/edit-phone/edit-phone';
 import { authGuard } from './core/guards/auth-guard';
@@ -44,21 +42,10 @@ export const routes: Routes = [
         ]
     },
     {
-         path:'admin',
-        component:AdminLayout,
-        canActivate: [authGuard],
-        children:[
-            {
-                path:'doctor-list',
-                component:DoctorList
-            },
-{
         path:'profile-details', 
+        canActivate: [authGuard],
         component:ProfilePage
-    }
-        ]
     },
-   
     {
         path:'**',
         redirectTo:'/login'

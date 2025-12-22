@@ -1,0 +1,168 @@
+<section class="profile-page container py-4">
+	<div class="row g-4">
+		<aside class="col-12 col-md-4 col-lg-3">
+			<div class="profile-card  border-0">
+				<div class="avatar-wrap text-center mb-3">
+					<div class="avatar-frame mx-auto position-relative">
+						@if(user?.image) {
+						<img [src]="user?.image" alt="avatar"/>
+						}@else {
+						<img src="images/userimage.jpg" alt="avatar"
+							class="avatar img-fluid rounded-circle">
+						}
+					</div>
+				</div>
+
+				<h5 class="mb-0 text-center">Seif Mohamed</h5>
+				<p class="text-muted text-center small">12 24 El-Nasr Street, Cairo</p>
+
+				<ul class="nav nav-pills flex-column mt-4" role="tablist">
+					<li class="nav-item mb-2">
+						<button class="nav-link active" data-bs-toggle="pill" data-bs-target="#personal" type="button"
+							role="tab">
+							<img src="images/user.svg" alt="user icon" width="24" height="24">
+						  <span  class="ms-2">Personal Information</span>
+						</button>
+					</li>
+					<li class="nav-item mb-2">
+						<button class="nav-link" data-bs-toggle="pill" data-bs-target="#password" type="button"
+							role="tab">
+							<img src="images/password.svg" alt="password icon" width="24" height="24">
+						  <span  class="ms-2">Password management</span>
+							</button>
+					</li>
+
+				</ul>
+
+				<button class="text-danger btn btn-logutout  border-0 bg-transparent" type="button" (click)="logout()">
+					<img src="images/logout.svg" alt="logout icon" width="24" height="24">
+				  <span  class="ms-2">
+					logout</span>
+				</button>
+
+			</div>
+		</aside>
+
+		<main class="col-12 col-md-8 col-lg-9">
+			<div class="tab-content">
+				<div class="tab-pane fade show active" id="personal" role="tabpanel">
+					<div class="card p-4  bg-transparent rounded-0 border-0">
+						<h6 class="mb-4">Personal information</h6>
+						@if (resultMessage) {
+						<div class="alert alert-success">
+							{{ resultMessage }}
+						</div>
+						}@else if (serverErrors.length > 0) {
+						<div class="alert alert-danger">
+
+							<li>{{ serverErrors }}</li>
+
+
+						</div>
+						}
+						<form class="row g-3" #editProfileForm="ngForm" (ngSubmit)="editProfileUser(editProfileForm)">
+							<div class="col-md-6">
+								<label class="form-label">Full Name</label>
+								<input class="form-control" placeholder="Seif Mohamed" ngModel name="name"
+									[ngModel]="user?.name">
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">Phone number</label>
+								<input class="form-control" placeholder="01******09" ngModel name="phone"
+									[ngModel]="user?.phone">
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">Email</label>
+								<input class="form-control" placeholder="SeifMohamed@gmail.com" ngModel name="email"
+									[ngModel]="user?.email">
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">Your birthday</label>
+								<div class="d-flex gap-2">
+			<select class="form-select" ngModel name="birthDay" [ngModel]="user?.extra_data?.birthdate?.Day" >
+										 
+										@for (item of dayOfMonth; track $index) {
+										<option [ngValue]="item">{{item}}</option>
+										}
+									</select>
+									<select class="form-select" ngModel name="birthMonth" [ngModel]="user?.extra_data?.birthdate?.Month">
+
+										@for (item of monthNames; track $index) {
+										<option [ngValue]="item">{{item}}</option>
+										}
+									</select>
+									<select class="form-select" ngModel name="birthYear" [ngModel]="user?.extra_data?.birthdate?.Year">
+										<option   selected>{{user?.extra_data?.birthdate?.Year || 'year'}}</option>
+										@for (item of years; track $index) {
+										<option [ngValue]="item">{{item}}</option>
+										}
+
+									</select>
+								</div>
+							</div>
+							<div class="col-12">
+								<label class="form-label">Location</label>
+								<input class="form-control" placeholder="129, El-Nasr Street, Cairo, Egypt" ngModel name="address"
+									[ngModel]="user?.address">
+							</div>
+							<div class="col-12 d-flex justify-content-end">
+								<button class="btn btn-primary px-4 w-50">Save changes</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="tab-pane fade" id="password" role="tabpanel">
+					<div class="card p-4  bg-transparent rounded-0 border-0">
+						<h6 class="mb-4">Password management</h6>
+						@if (resultMessage) {
+						<div class="alert alert-success">
+							{{ resultMessage }}
+						</div>
+						}@else if (serverErrors.length > 0) {
+						<div class="alert alert-danger">
+
+							<li>{{ serverErrors }}</li>
+
+
+						</div>
+						}
+						<form class="row g-3" #changePasswordForm="ngForm"
+							(ngSubmit)="onChangePassword(changePasswordForm)">
+							<div class="col-12">
+								<label class="form-label">Current password</label>
+								<input class="form-control" type="password" required ngModel name="current_password">
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">New password</label>
+								<input class="form-control" type="password" required ngModel name="new_password">
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">Confirm password</label>
+								<input class="form-control" type="password" required ngModel
+									name="new_password_confirmation">
+							</div>
+							<div class="col-12 d-flex justify-content-end">
+
+								<button class="btn btn-primary" [disabled]="changePasswordForm.invalid || loading">
+
+									@if (!loading) {
+									<span>Change password</span>
+									}@else {
+									<span>
+										<span class="spinner-border spinner-border-sm" role="status"
+											aria-hidden="true"></span>
+										Loading...
+									</span>
+									}
+
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</main>
+	</div>
+</section>

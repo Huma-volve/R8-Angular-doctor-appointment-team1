@@ -1,0 +1,23 @@
+<div class="container-fluid p-0">
+  <div class="chat-container p-3">
+    @for(msg of chat; track msg.conversation_id ){
+
+    <div class="d-flex mb-3 justify-content-end">
+      <div class="message-bubble p-2 px-3 shadow-sm bg-light-gray text-dark patient-msg">
+        {{ msg.body }}
+      </div>
+    </div>
+    }@empty {
+    <div
+      class="if-it-Free mx-auto d-flex justify-content-center align-items-center flex-column text-white p-5 rounded-4"
+    >
+      <div class="title text-dark text-center">
+        <h3 class="fw-bold">Start your chat</h3>
+        <p class="text-secondary">Stay in touch with your doctor for easier follow-up</p>
+      </div>
+
+      <button class="btn btn-primary mt-3 px-4 rounded-pill">start Conversation</button>
+    </div>
+    }
+  </div>
+</div>

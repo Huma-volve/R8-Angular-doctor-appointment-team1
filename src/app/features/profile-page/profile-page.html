@@ -79,23 +79,22 @@
 							<div class="col-md-6">
 								<label class="form-label">Your birthday</label>
 								<div class="d-flex gap-2">
-									<select class="form-select" ngModel name="birthDay">
-										<option   selected [ngValue]="user?.extra_data?.birthdate?.Day || 'day'">{{user?.extra_data?.birthdate?.Day || 'day'}}</option>
+			<select class="form-select" ngModel name="birthDay" [ngModel]="user?.extra_data?.birthdate?.Day" >
+										 
 										@for (item of dayOfMonth; track $index) {
-										<option>{{item}}</option>
+										<option [ngValue]="item">{{item}}</option>
 										}
 									</select>
-									<select class="form-select" ngModel name="birthMonth">
-										<option   selected>{{user?.extra_data?.birthdate?.Month || 'month'}}</option>
+									<select class="form-select" ngModel name="birthMonth" [ngModel]="user?.extra_data?.birthdate?.Month">
 
 										@for (item of monthNames; track $index) {
-										<option>{{item}}</option>
+										<option [ngValue]="item">{{item}}</option>
 										}
 									</select>
-									<select class="form-select" ngModel name="birthYear">
+									<select class="form-select" ngModel name="birthYear" [ngModel]="user?.extra_data?.birthdate?.Year">
 										<option   selected>{{user?.extra_data?.birthdate?.Year || 'year'}}</option>
 										@for (item of years; track $index) {
-										<option>{{item}}</option>
+										<option [ngValue]="item">{{item}}</option>
 										}
 
 									</select>

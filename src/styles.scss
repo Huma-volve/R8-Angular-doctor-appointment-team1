@@ -28,6 +28,10 @@ font-family: "Montserrat", sans-serif;
     border: 1px solid #BBC1C7; // light gray
     padding:8px 16px 8px 12px;
 }
+.flex-noWrap
+{
+  flex-wrap: nowrap;
+}
 
 .or-divider {
   display: flex;

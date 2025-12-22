@@ -59,7 +59,6 @@
             
           }
       }
-
             <button class="btn btn-primary w-100" [disabled]="loginForm.invalid || loading">
  
     @if (!loading) {
@@ -74,6 +73,11 @@
   </button>
   @if(resultMessage){
         <div class="text-success pt-2 pb-1 text-center">{{resultMessage}}</div>
+    }@else if(serverErrors)
+    {
+      <div class="text-danger pt-2 pb-1 text-center">
+          {{serverErrors}}
+      </div>
     }
         </form>
         <div class="or-divider mt-3 mb-3">

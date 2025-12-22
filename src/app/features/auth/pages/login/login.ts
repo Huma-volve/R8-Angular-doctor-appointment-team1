@@ -37,15 +37,17 @@ authService = inject(Auth);
             console.log(res);
             this.resultMessage = res.message; 
              this.authService.setToken(res.data?.token );
-             this.router.navigate(['profile-details']);
+             this.router.navigate(['/admin/profile-details']);
              this.loginForm.reset(); 
              this.loading = false; 
          },
          error:(err:any)=>{
             this.loading = false;
-            this.serverErrors =err.error?.errors;
+            console.log(err);
+            
+            this.serverErrors =err?.error?.message;
             console.log(this.serverErrors);
-            applyServerErrors(this.loginForm,err.error?.errors);
+            applyServerErrors(this.loginForm,err?.error?.message);
          }
       })
     }

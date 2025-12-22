@@ -1,1 +1,17 @@
-<p>doctor-list works!</p>
+<section class="search-doctor">
+       <section class="search-filter">
+            <div class="d-flex justify-content-between gap-3">
+                  <div class="fitler"></div>
+                  <form class="flex-grow-1">
+                       <input placeholder="search" class="form-control"/>
+                  </form>
+                  <a routerLink="/" class=" btn btn-map">
+                      <i class="bi bi-map"></i>
+                      <span>map</span>
+                  </a>
+            </div>
+       </section>
+       <section class="doctro-list">
+           <app-doctor-card/>
+       </section>
+</section>

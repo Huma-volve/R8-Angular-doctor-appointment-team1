@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common';
 export class ProfilePage {
   avatarPreview: string | null = null;
   user: userProfileReponse | null = null;
-
   auth = inject(Auth);
   router = inject(Router);
   serverErrors:string[] = [];

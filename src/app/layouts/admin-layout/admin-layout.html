@@ -1,1 +1,147 @@
-<p>admin-layout works!</p>
+<div class="wrpper">
+       <header>
+            <nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm py-2">
+  <div class="container-fluid">
+
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold text-primary" href="#">
+      Med<span class="text-dark">Care</span>
+    </a>
+
+    <!-- Toggle -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Content -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+
+      <!-- Search -->
+      <form class="d-flex mx-lg-4 my-2 my-lg-0 flex-grow-1">
+        <div class="input-group flex-noWrap search-form">
+          <span class="input-group-text bg-light border-end-0">
+            <i class="bi bi-search"></i>
+          </span>
+          <input
+            type="text"
+            class="form-control border-start-0"
+            placeholder="Search about specialty doctor"
+          />
+        </div>
+      </form>
+
+      <!-- Menu -->
+      <ul class="navbar-nav align-items-lg-center ms-auto gap-lg-3">
+        <li class="nav-item">
+          <a class="nav-link fw-medium active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-medium" href="#">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-medium" href="#">Chat</a>
+        </li>
+
+        <!-- Profile -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle d-flex align-items-center"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
+            <img
+              src="https://i.pravatar.cc/40"
+              class="rounded-circle me-2"
+              width="36"
+              height="36"
+            />
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+       </header>
+       <main>
+           <div class="container">
+              <router-outlet/>
+           </div>
+       </main>
+    </div>
+
+    <footer class="bg-dark text-white-50 pt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <a routerLink="/admin" class="d-flex align-items-center mb-3 text-decoration-none text-white">
+              <img src="images/BsHeartPulse.svg" alt="Cure logo" width="40" class="me-2" />
+              <span class="fs-5 fw-bold">Cure</span>
+            </a>
+            <p class="small text-white-50">Cure helps you find trusted doctors, book appointments, and manage your health—quickly and easily.</p>
+
+            <div class="d-flex gap-2">
+              <a href="#" class="btn btn-outline-light btn-sm rounded-circle" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="btn btn-outline-light btn-sm rounded-circle" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+              <a href="#" class="btn btn-outline-light btn-sm rounded-circle" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+              <a href="#" class="btn btn-outline-light btn-sm rounded-circle" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="row">
+              <div class="col-6">
+                <h6 class="text-uppercase fw-bold mb-3 text-white">Company</h6>
+                <ul class="list-unstyled small">
+                  <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Home</a></li>
+                  <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Doctors</a></li>
+                  <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">FAQs</a></li>
+                  <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Contact Us</a></li>
+                </ul>
+              </div>
+              <div class="col-6">
+                <h6 class="text-uppercase fw-bold mb-3 text-white">Support</h6>
+                <ul class="list-unstyled small">
+                  <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Help Center</a></li>
+                  <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">How it works</a></li>
+                  <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Privacy Policy</a></li>
+                  <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Terms & Conditions</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <h6 class="text-uppercase fw-bold mb-3 text-white">Contact Info</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i><a href="tel:+180077555321" class="text-decoration-none text-white-50">080 707 555-321</a></li>
+              <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i><a href="mailto:demo@example.com" class="text-decoration-none text-white-50">demo@example.com</a></li>
+              <li><i class="bi bi-geo-alt-fill me-2"></i>526 Melrose Street, Water Mill, 11976 New York</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="border-top border-secondary opacity-25" />
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small">
+          <div class="mb-2 mb-md-0 text-white-50">&copy; 2024 <span class="fw-bold text-white">Techvio</span> - All Right Reserved</div>
+          <div>
+            <a href="#" class="text-decoration-none text-white-50 me-3">Terms & Condition</a>
+            <a href="#" class="text-decoration-none text-white-50">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>

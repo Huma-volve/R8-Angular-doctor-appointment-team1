@@ -28,7 +28,7 @@
             @if (phoneCtrl.invalid && phoneCtrl.touched) {
 <div class="text-danger">
     @if (phoneCtrl.errors?.['required']) {
-<small *ngIf="phoneCtrl.errors?.['required']">
+<small>
         Phone is required
     </small>
     }

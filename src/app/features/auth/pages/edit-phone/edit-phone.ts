@@ -1,6 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Auth } from './../../../../core/services/auth';
+import { AuthService } from './../../../../core/services/auth';
 import { Component, inject } from '@angular/core';
 import { FormHeader } from "../../components/form-header/form-header";
 
@@ -13,7 +13,7 @@ import { FormHeader } from "../../components/form-header/form-header";
 export class EditPhone {
 
 
-  auth = inject(Auth);
+  auth = inject(AuthService);
   router = inject(Router);
     loading:boolean  = false;
    resultMessage:string= '';

@@ -1,19 +1,20 @@
 import { userLoginResponse } from './../../../../core/models/user';
 import {FormGroup, FormControl, ReactiveFormsModule,Validators,AbstractControl,ValidationErrors} from '@angular/forms';
 import { Router,RouterLink } from '@angular/router';
-import { Auth } from './../../../../core/services/auth';
+import { AuthService } from './../../../../core/services/auth';
 import { Component, inject } from '@angular/core';
 import { FormHeader } from "../../components/form-header/form-header";
 import { applyServerErrors } from '../../../../core/helpers/form.error';
+import { GoogleLogin } from "../../components/google-login/google-login";
 
 @Component({
   selector: 'app-login',
-  imports: [FormHeader,RouterLink,ReactiveFormsModule],
+  imports: [FormHeader, RouterLink, ReactiveFormsModule, GoogleLogin],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class Login {
-authService = inject(Auth);
+authService = inject(AuthService);
 
   loading:boolean  = false;
    serverErrors:string[] = [];

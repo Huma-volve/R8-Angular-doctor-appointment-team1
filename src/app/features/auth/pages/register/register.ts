@@ -1,5 +1,5 @@
 import { User } from './../../../../core/models/user';
-import { Auth } from './../../../../core/services/auth';
+import {  AuthService } from './../../../../core/services/auth';
 import { Component, inject } from '@angular/core';
 import { RouterLink,Router } from "@angular/router";
 
@@ -15,7 +15,7 @@ import { GoogleLogin } from "../../components/google-login/google-login";
 })
 export class Register {
  
-  authService = inject(Auth);
+  authService = inject(AuthService);
 
   loading:boolean  = false;
    serverErrors:string[] = [];

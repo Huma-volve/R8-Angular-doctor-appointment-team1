@@ -6,7 +6,7 @@ import { DocService } from './service/doc-service';
 
 @Component({
   selector: 'app-dcard',
-  imports: [CommonModule, RouterModule, Dmap],
+  imports: [CommonModule, RouterModule],
   templateUrl: './dcard.html',
   styleUrl: './dcard.scss',
 })

@@ -19,16 +19,15 @@ import { PasswordSetting } from './password-setting/password-setting';
 import { Notification } from './notification/notification';
 
 export const routes: Routes = [
- { path: '', component:Home},
-    {path:'notifications',component:Notification},
-    {path:'profile-popup',component:ProfilePopup},
-    {path:'setting-popup',component:SettingPopup},
-    {path:'passwordsetting',component:PasswordSetting},
-    {path:'payment',component:Payment},
-    {path:'privacy-policy',component:PrivacyPolicy},
-    { path:'add-new-card',component:AddNewCard }
-
-
-
-
+    { path: 'dcard', component: Dcard },
+    { path: 'dmap', component: Dmap },
+    { path: 'dcard/all', component: Dcard },
+    { path: '', component: Home },
+    { path: 'notifications', component: Notification },
+    { path: 'profile-popup', component: ProfilePopup },
+    { path: 'setting-popup', component: SettingPopup },
+    { path: 'passwordsetting', component: PasswordSetting },
+    { path: 'payment', component: Payment },
+    { path: 'privacy-policy', component: PrivacyPolicy },
+    { path: 'add-new-card', component: AddNewCard }
 ];

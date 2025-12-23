@@ -10,8 +10,20 @@ import { Router } from '@angular/router';
 })
 export class Notification implements OnInit {
 
- 
-  
+  notifications: any[] = [];
+
+  constructor(
+    private router: Router,
+    
+  ) {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
+ goBack(): void {
+    this.router.navigate(['/']);
+  }
+
   
 }
 

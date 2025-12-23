@@ -1,10 +1,18 @@
 <div class="container-fluid p-0">
   <div class="chat-container p-3">
     @for(msg of chat; track msg.conversation_id ){
-
     <div class="d-flex mb-3 justify-content-end">
       <div class="message-bubble p-2 px-3 shadow-sm bg-light-gray text-dark patient-msg">
-        {{ msg.body }}
+        @if(msg.type == 'text'){
+        <div>
+           <p >{{msg.body}}</p>
+        </div>
+        }
+       @else if (msg.type == 'image') {
+        <div class="body-img my-2">
+          <img [src]="msg.body" alt="">
+        </div>
+       }
       </div>
     </div>
     }@empty {

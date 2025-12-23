@@ -22,7 +22,13 @@
                 (keydown.enter)="send(messageInput.value); messageInput.value = ''"
               />
               <div class="input-icons">
-                <button class="icon-btn"><i class="fas fa-paperclip"></i></button>
+                <input
+                  type="file"
+                  #fileInput
+                  hidden
+                  (change)="onFileSelected($event)"
+                />
+                <button class="icon-btn" (click)="fileInput.click()"><i class="fas fa-paperclip"></i></button>
                 <button class="icon-btn"><i class="fas fa-camera"></i></button>
               </div>
             </div>

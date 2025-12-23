@@ -9,67 +9,26 @@ import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { Routes } from '@angular/router';
 import { Dcard } from './components/dcard/dcard';
 import { Dmap } from './components/dmap/dmap';
+import { Home } from './home/home';
+import { ProfilePopup } from './profile-popup/profile-popup';
+import { SettingPopup } from './setting-popup/setting-popup';
+import { Payment } from './payment/payment';
+import { PrivacyPolicy } from './privacy-policy/privacy-policy';
+import { AddNewCard } from './add-new-card/add-new-card';
+import { PasswordSetting } from './password-setting/password-setting';
+import { Notification } from './notification/notification';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'appointments',
-    pathMatch: 'full',
-  },
-  {
-    path: 'appointments',
-    loadChildren: () =>
-      import('./features/appointment/appointment.routes')
-        .then(m => m.APPOINTMENT_ROUTES),
-  },
-  {
-    path: '**',
-    redirectTo: 'appointments',
-  },
+ { path: '', component:Home},
+    {path:'notifications',component:Notification},
+    {path:'profile-popup',component:ProfilePopup},
+    {path:'setting-popup',component:SettingPopup},
+    {path:'passwordsetting',component:PasswordSetting},
+    {path:'payment',component:Payment},
+    {path:'privacy-policy',component:PrivacyPolicy},
+    { path:'add-new-card',component:AddNewCard }
 
-export const routes: Routes = [
-{path: 'dcard', component: Dcard},
-{path:'dmap', component: Dmap},
-export const routes: Routes = [
-    {
-        path:'',
-        component:AuthLayout,
-        children:[
-             {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full',
-      },
-            {
-                path:'login',
-                component:Login
-            },
-            {
-               path:'register',
-                component:Register 
-            },
-            {
-                path:'otp',
-                component:Otp
-            },
-              {
-                path:'editPhone',
-                component:EditPhone
-            },
-              {
-                path:'forgetPassword',
-                component:ForgetPassword
-            },
 
-        ]
-    },
-    {
-        path:'profile-details', 
-        canActivate: [authGuard],
-        component:ProfilePage
-    },
-    {
-        path:'**',
-        redirectTo:'/login'
-    }
+
+
 ];

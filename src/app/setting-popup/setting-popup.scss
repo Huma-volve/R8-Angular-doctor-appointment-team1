@@ -1,0 +1,107 @@
+/* Wrapper centers everything */
+.settings-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;      /* horizontal center */
+  align-items: center;          /* vertical center */
+  background: #f0f0f0;          /* optional page background */
+  padding: 16px;                
+  box-sizing: border-box;
+}
+
+/* Card */
+.settings-page {
+  width: 100%;
+  max-width: 420px;             /* increased width */
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.15); /* bigger shadow */
+  font-family: Arial, Helvetica, sans-serif;
+  color: #202124;
+  padding: 24px 0 32px;         /* more padding */
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+}
+
+.back {
+  font-size: 20px;              /* bigger back icon */
+  margin-right: 14px;
+  color: #202124;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 18px;              /* bigger title */
+  font-weight: 500;
+}
+
+/* List */
+.list {
+  padding: 0 20px;               /* wider list */
+}
+
+.item {
+  background: #f5f6f7;
+  border-radius: 12px;
+  padding: 16px;                 /* bigger padding */
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 14px;                     /* bigger gap */
+}
+
+/* Icon container */
+.icon-box {
+  width: 32px;                    /* bigger icon box */
+  height: 32px;
+  border-radius: 8px;
+  background: #e8eaed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-box i {
+  font-size: 16px;                /* bigger icon */
+  color: #5f6368;
+}
+
+.item span {
+  font-size: 14px;                /* bigger text */
+  font-weight: 400;
+  color: #202124;
+}
+
+/* Arrow */
+.arrow {
+  font-size: 14px;                /* bigger arrow */
+  color: #9aa0a6;
+}
+
+/* Delete Account */
+.item.danger {
+  background: #f5f6f7;
+}
+
+.item.danger span {
+  color: #202124;
+}

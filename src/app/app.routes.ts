@@ -10,56 +10,48 @@ import { Routes } from '@angular/router';
 import { Dcard } from './components/dcard/dcard';
 import { Dmap } from './components/dmap/dmap';
 
-
 export const routes: Routes = [
-<<<<<<< HEAD
-    { path: 'dcard', component: Dcard },
-    { path: 'dmap', component: Dmap },
-    { path: 'dcard/all', component: Dcard}
-=======
-{path: 'dcard', component: Dcard},
-{path:'dmap', component: Dmap},
-export const routes: Routes = [
-    {
-        path:'',
-        component:AuthLayout,
-        children:[
-             {
+  { path: 'dcard', component: Dcard },
+  { path: 'dmap', component: Dmap },
+  { path: 'dcard/all', component: Dcard },
+  {
+    path: '',
+    component: AuthLayout,
+    children: [
+      {
         path: '',
         redirectTo: 'login',
         pathMatch: 'full',
       },
-            {
-                path:'login',
-                component:Login
-            },
-            {
-               path:'register',
-                component:Register 
-            },
-            {
-                path:'otp',
-                component:Otp
-            },
-              {
-                path:'editPhone',
-                component:EditPhone
-            },
-              {
-                path:'forgetPassword',
-                component:ForgetPassword
-            },
-
-        ]
-    },
-    {
-        path:'profile-details', 
-        canActivate: [authGuard],
-        component:ProfilePage
-    },
-    {
-        path:'**',
-        redirectTo:'/login'
-    }
->>>>>>> fce1b03dc5f50fb9c5f9e2b278115544e6ae8f2d
+      {
+        path: 'login',
+        component: Login,
+      },
+      {
+        path: 'register',
+        component: Register,
+      },
+      {
+        path: 'otp',
+        component: Otp,
+      },
+      {
+        path: 'editPhone',
+        component: EditPhone,
+      },
+      {
+        path: 'forgetPassword',
+        component: ForgetPassword,
+      },
+    ],
+  },
+  {
+    path: 'profile-details',
+    canActivate: [authGuard],
+    component: ProfilePage,
+  },
+  {
+    path: '**',
+    redirectTo: '/login',
+  },
 ];

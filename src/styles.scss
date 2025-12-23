@@ -1,2 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/dist/css/bootstrap.min.css";
+/* styles.scss */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* styles.css or styles.scss */
+
+/* Style all <form> elements */
+
+
+/* Style all <input> and <select> elements (except checkboxes/radio buttons) */
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  width: 100%;
+   padding: 8px 16px;
+    border-radius: 10px;
+    &:focus,&:active{
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
+label,input,button {
+font-family: "Montserrat", sans-serif;
+}
+.google-btn
+{
+    border: 1px solid #BBC1C7; // light gray
+    padding:8px 16px 8px 12px;
+}
+.flex-noWrap
+{
+  flex-wrap: nowrap;
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #9ca3af; // gray
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #BBC1C7; // light gray line
+  }
+
+  &::before {
+    margin-right: 12px;
+  }
+
+  &::after {
+    margin-left: 12px;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+}
+.form-error {
+  color: red;
+  font-size: 0.8rem;
+}
+
+.no-wrap{
+  flex-wrap: nowrap !important;
+}

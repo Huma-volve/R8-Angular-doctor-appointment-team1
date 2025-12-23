@@ -4,6 +4,7 @@ import { Dmap } from './components/dmap/dmap';
 
 
 export const routes: Routes = [
-{path: 'dcard', component: Dcard},
-{path:'dmap', component: Dmap},
+    { path: 'dcard', component: Dcard },
+    { path: 'dmap', component: Dmap },
+    { path: 'dcard/all', component: Dcard}
 ];

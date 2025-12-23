@@ -1,0 +1,66 @@
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<div class="screen">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+     <i
+    class="fa-solid fa-chevron-left back-btn"
+    (click)="goBackToPayment()"
+  ></i>
+      <h2>Add New Card</h2>
+    </div>
+
+    <!-- Card Preview -->
+    <div class="card-preview">
+      <div class="card-top">
+        <span class="bank">Spenny</span>
+        <span class="visa">VISA</span>
+      </div>
+
+      <div class="card-number">6789 4567 5432 8903</div>
+
+      <div class="card-bottom">
+        <span>Seif Mohamed</span>
+        <span>12/22</span>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="form">
+      <label>Cardholder Name</label>
+      <input type="text" placeholder="Cardholder Name" />
+
+      <label>Card Number</label>
+      <div class="input-icon">
+        <input type="text" placeholder="Card Number" />
+        <i class="fa-regular fa-eye"></i>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Expiry Date</label>
+          <div class="expiry">
+            <input type="text" placeholder="02" />
+            <input type="text" placeholder="12" />
+          </div>
+        </div>
+
+        <div>
+          <label>CVV Code</label>
+          <input type="text" placeholder="123" />
+        </div>
+      </div>
+    </div>
+
+ 
+    <!-- Save Button -->
+    <button class="save-btn">Save</button>
+
+  </div>
+</div>
+

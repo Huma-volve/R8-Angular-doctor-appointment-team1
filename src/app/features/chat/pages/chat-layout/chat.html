@@ -11,9 +11,9 @@
         <div class="body bg-white flex-grow-1">
           <app-body-chat></app-body-chat>
         </div>
-        <div class="footer-chat">
+       <div class="footer-chat">
           <div class="chat-input-container row px-2">
-            <div class="input-wrapper col-11">
+            <div class="input-wrapper col-10">
               <input
                 #messageInput
                 type="text"
@@ -22,16 +22,31 @@
                 (keydown.enter)="send(messageInput.value); messageInput.value = ''"
               />
               <div class="input-icons">
-                <input
-                  type="file"
-                  #fileInput
-                  hidden
-                  (change)="onFileSelected($event)"
-                />
-                <button class="icon-btn" (click)="fileInput.click()"><i class="fas fa-paperclip"></i></button>
-                <button class="icon-btn"><i class="fas fa-camera"></i></button>
+                <input type="file" #fileInput (change)="onFileSelected($event)" hidden />
+                <button type="button" class="icon-btn" (click)="fileInput.click()">
+                  <i class="fas fa-paperclip"></i>
+                </button>
+                <button type="button" class="icon-btn" (click)="fileInput.click()">
+                  <i class="fas fa-camera"></i>
+                </button>
               </div>
             </div>
+
+            <button
+              type="button"
+              class="mic-btn col-1 p-0"
+              [class.recording]="isRecording"
+              (mousedown)="startRecording()"
+              (mouseup)="stopRecording()"
+              (mouseleave)="isRecording ? stopRecording() : null"
+            >
+              <i
+                class="fa-solid"
+                [class.fa-microphone]="!isRecording"
+                [class.fa-stop]="isRecording"
+              ></i>
+            </button>
+
             <button
               class="mic-btn col-1 p-0"
               (click)="send(messageInput.value); messageInput.value = ''"

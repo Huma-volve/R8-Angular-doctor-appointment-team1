@@ -13,7 +13,10 @@ import { Chats } from '../../service/chats';
 export class Chat implements OnInit{
   conversationId:number = 0
   selectedFile: File | null = null;
-  imagePhoto:any
+  chat: Chat[] = [];
+  mediaRecorder: any;
+  audioChunks: any[] = [];
+  isRecording = false;
   private readonly chatService = inject(Chats);
   ngOnInit(): void {
     this.chatService.selectedChatId$.subscribe(converstionId => {
@@ -24,36 +27,95 @@ export class Chat implements OnInit{
   });
   }
 
-  chat: Chat[] = [];
-  send(data: any) {
-    var formData = new FormData();
-  
-    if(data) {
-      formData.append('body', data);
+  // دالة إرسال النص (من الـ Input)
+  send(data: string) {
+    if (!data || data.trim() === '') return;
+
+    const formData = new FormData();
+    formData.append('body', data);
+    // الـ API غالباً هيفهم لوحده إن الـ type = text طالما مبعتش ملف
+
+    this.uploadMessage(formData);
+  }
+
+  onFileSelected(event: any) {
+    const input = event.target as HTMLInputElement;
+    if (!input.files || input.files.length === 0) return;
+
+    const file = input.files[0];
+
+    // فحص نوع الملف قبل الإرسال عشان نوفر وقت
+    const allowedTypes = ['image', 'audio', 'video'];
+    const fileType = file.type.split('/')[0]; // بيجيب اول كلمة زي image/png -> image
+
+    if (!allowedTypes.includes(fileType)) {
+      alert('عفواً، السيرفر يقبل الصور والفيديوهات والتسجيلات الصوتية فقط');
+      return;
     }
-    
-    if(this.selectedFile) {
-      formData.append('attachment', this.selectedFile);
-      this.imagePhoto = this.selectedFile
-    }
-    console.log(this.selectedFile)
-    this.chatService.sendMessage(this.conversationId, formData).subscribe({
+
+    const formData = new FormData();
+    formData.append('attachment', file); // ده الـ Key اللي اشتغل معاك
+    formData.append('body', ''); // لازم تبعت body فاضي عشان ميعتبرهاش رسالة نصية
+
+    this.uploadMessage(formData);
+    input.value = '';
+  }
+  private uploadMessage(formData: FormData) {
+    console.log('🚀 جاري إرسال الـ Request للـ API...');
+
+    this.chatService.sendMessage(this.conversationId , formData).subscribe({
       next: (res: any) => {
-        console.log(res.data);
-        this.chatService.appendMessage(res.data);
-        this.selectedFile = null;
-       },
+        console.log('✔ رد السيرفر:', res);
+        if (res && res.data) {
+          this.chatService.appendMessage(res.data);
+        }
+      },
       error: (err) => {
-        console.log(err);
+        console.error('❌ فشل الإرسال:', err);
       },
     });
   }
+  async startRecording() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      this.mediaRecorder = new MediaRecorder(stream);
+      this.audioChunks = [];
 
+      this.mediaRecorder.ondataavailable = (event: any) => {
+        this.audioChunks.push(event.data);
+      };
 
-onFileSelected(event: any) {
-  this.selectedFile = event.target.files[0] ?? null;
-  console.log(this.selectedFile)
+      this.mediaRecorder.onstop = () => {
+        const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
+        const audioFile = new File([audioBlob], 'voice-message.wav', { type: 'audio/wav' });
+
+        const formData = new FormData();
+        formData.append('attachment', audioFile); // بنبعته كـ attachment زي الصورة
+        formData.append('body', '');
+
+        console.log('✅ تم تجهيز تسجيل الصوت للإرسال');
+        this.uploadMessage(formData);
+      };
+
+      this.mediaRecorder.start();
+      this.isRecording = true;
+    } catch (err) {
+      console.error('❌ لم يتم الوصول للمايك:', err);
+      alert('برجاء السماح بالوصول للمايك');
+    }
+  }
+
+  // دالة إيقاف التسجيل
+  stopRecording() {
+    if (this.mediaRecorder && this.isRecording) {
+      this.mediaRecorder.stop();
+      this.isRecording = false;
+      // إيقاف المايك تماماً بعد التسجيل
+      this.mediaRecorder.stream.getTracks().forEach((track: any) => track.stop());
+    }
+  }
 }
 
+ 
 
-}
+

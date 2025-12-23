@@ -10,48 +10,8 @@ import { Routes } from '@angular/router';
 import { Dcard } from './components/dcard/dcard';
 import { Dmap } from './components/dmap/dmap';
 
+
 export const routes: Routes = [
-  { path: 'dcard', component: Dcard },
-  { path: 'dmap', component: Dmap },
-  { path: 'dcard/all', component: Dcard },
-  {
-    path: '',
-    component: AuthLayout,
-    children: [
-      {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full',
-      },
-      {
-        path: 'login',
-        component: Login,
-      },
-      {
-        path: 'register',
-        component: Register,
-      },
-      {
-        path: 'otp',
-        component: Otp,
-      },
-      {
-        path: 'editPhone',
-        component: EditPhone,
-      },
-      {
-        path: 'forgetPassword',
-        component: ForgetPassword,
-      },
-    ],
-  },
-  {
-    path: 'profile-details',
-    canActivate: [authGuard],
-    component: ProfilePage,
-  },
-  {
-    path: '**',
-    redirectTo: '/login',
-  },
-];
+    { path: 'dcard', component: Dcard },
+    { path: 'dmap', component: Dmap },
+    { path: 'dcard/all', component: Dcard}]

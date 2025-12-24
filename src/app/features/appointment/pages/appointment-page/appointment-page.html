@@ -1,7 +1,47 @@
-<app-booking-panel
-  [doctorId]="doctorId"
-  paymentMethod="stripe"
-  notes="Doctor 2"
-></app-booking-panel>
+<div class="container py-4">
+  <div class="d-flex align-items-center gap-2 mb-3">
+    <a class="back-link" href="javascript:void(0)">←</a>
+    <h5 class="m-0 fw-semibold">Make an appointment</h5>
+  </div>
 
-<app-doctor-card [specialtyId]="1" [doctorId]="1"></app-doctor-card>
+  <div class="row g-4">
+    <div class="col-12 col-lg-8">
+      <app-appointment-scheduler
+        (dateChange)="onDateChange($event)"
+        (timeChange)="onTimeChange($event)"
+        (bookClick)="book()"
+      ></app-appointment-scheduler>
+
+      <div class="mt-3 text-danger" *ngIf="error">{{ error }}</div>
+
+      <div class="mt-4">
+        <app-reviews-section></app-reviews-section>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+      <app-doctor-profile-card></app-doctor-profile-card>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container py-4">
+  <div class="row g-4">
+    <div class="col-12 col-lg-8">
+      <app-appointment-scheduler></app-appointment-scheduler>
+      <div class="mt-4">
+        <app-reviews-section></app-reviews-section>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+      <ng-container *ngIf="doctor$ | async as doctor; else loadingTpl">
+        <app-doctor-profile-card [doctor]="doctor"></app-doctor-profile-card>
+      </ng-container>
+
+      <ng-template #loadingTpl>
+        <div class="text-muted">Loading doctor...</div>
+      </ng-template>
+    </div>
+  </div>
+</div> -->

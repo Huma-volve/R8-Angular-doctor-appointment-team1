@@ -1,19 +1,7 @@
 import { Routes } from '@angular/router';
+import { AppointmentPageComponent } from './features/appointment/pages/appointment-page/appointment-page';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'appointments',
-    pathMatch: 'full',
-  },
-  {
-    path: 'appointments',
-    loadChildren: () =>
-      import('./features/appointment/appointment.routes')
-        .then(m => m.APPOINTMENT_ROUTES),
-  },
-  {
-    path: '**',
-    redirectTo: 'appointments',
-  },
+  { path: 'appointment/:doctorId', component: AppointmentPageComponent },
+  { path: '', redirectTo: 'appointment/5', pathMatch: 'full' } // مؤقت للتجربة
 ];

@@ -1,0 +1,69 @@
+/* appointment-scheduler.component.scss */
+.scheduler {
+  background: #fff;
+}
+
+.month-picker {
+  color: #0f172a;
+}
+
+.calendar-icon {
+  font-size: 18px;
+}
+
+.icon-btn {
+  border: 0;
+  background: transparent;
+  line-height: 14px;
+  padding: 0;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.day-pill {
+  width: 74px;
+  height: 74px;
+  border: 0;
+  border-radius: 14px;
+  background: #f1f5f9;
+  text-align: center;
+  padding: 10px 8px;
+  transition: 0.15s;
+}
+.day-pill.active {
+  background: #1d4ed8;
+  color: #fff;
+}
+.day-pill.active .text-muted {
+  color: rgba(255,255,255,.8) !important;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 14px;
+}
+@media (max-width: 768px) {
+  .slots-grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+}
+
+.slot-pill {
+  border: 0;
+  border-radius: 14px;
+  background: #f1f5f9;
+  padding: 14px 12px;
+  font-weight: 600;
+  color: #0f172a;
+  transition: 0.15s;
+}
+.slot-pill.active {
+  background: #1d4ed8;
+  color: #fff;
+}
+.slot-pill:disabled {
+  opacity: 0.45;
+}
+
+.selected-line {
+  color: #0f172a;
+}

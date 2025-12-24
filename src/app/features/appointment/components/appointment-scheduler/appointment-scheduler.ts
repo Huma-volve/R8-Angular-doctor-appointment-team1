@@ -1,93 +1,8 @@
-// import { Component } from '@angular/core';
-// import { CommonModule } from '@angular/common';
 
-// type DayItem = { label: string; day: number; date: Date };
-// type SlotItem = { id: string; label: string; available: boolean };
-
-
-// @Component({
-//   selector: 'app-appointment-scheduler',
-//   imports: [CommonModule],
-//   templateUrl: './appointment-scheduler.html',
-//   styleUrl: './appointment-scheduler.scss',
-// })
-
-// export class AppointmentSchedulerComponent {
-//   currentMonth = new Date(2024, 10, 1); // نوفمبر 2024 (10 = Nov)
-//   selectedDayIndex = 3; // الاثنين في المثال
-//   selectedSlotId: string | null = 's3';
-
-//   days: DayItem[] = this.buildWeekDays(this.currentMonth, 12); // نقطة بداية شكلية
-//   slots: SlotItem[] = [
-//     { id: 's1', label: '9:00 AM', available: true },
-//     { id: 's2', label: '10:00 AM', available: true },
-//     { id: 's3', label: '11:00 AM', available: true },
-//     { id: 's4', label: '12:30 AM', available: true },
-//     { id: 's5', label: '5:30 PM', available: true },
-//     { id: 's6', label: '7:00 PM', available: true },
-//     { id: 's7', label: '9:00 PM', available: true },
-//     { id: 's8', label: '10:00 PM', available: true },
-//   ];
-
-//   get monthLabel() {
-//     return this.currentMonth.toLocaleString('en-US', { month: 'long', year: 'numeric' });
-//   }
-
-//   get selectedDate(): Date {
-//     return this.days[this.selectedDayIndex]?.date ?? new Date();
-//   }
-
-//   get selectedSlotLabel(): string {
-//     return this.slots.find(s => s.id === this.selectedSlotId)?.label ?? '';
-//   }
-
-//   prevMonth() {
-//     this.currentMonth = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() - 1, 1);
-//     this.days = this.buildWeekDays(this.currentMonth, 12);
-//     this.selectedDayIndex = 3;
-//     this.selectedSlotId = null;
-//   }
-
-//   nextMonth() {
-//     this.currentMonth = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() + 1, 1);
-//     this.days = this.buildWeekDays(this.currentMonth, 12);
-//     this.selectedDayIndex = 3;
-//     this.selectedSlotId = null;
-//   }
-
-//   selectDay(i: number) {
-//     this.selectedDayIndex = i;
-//     this.selectedSlotId = null;
-//   }
-
-//   selectSlot(slot: SlotItem) {
-//     if (!slot.available) return;
-//     this.selectedSlotId = slot.id;
-//   }
-
-//   book() {
-//     if (!this.selectedSlotId) return;
-//     alert(`Booked: ${this.selectedDate.toDateString()} - ${this.selectedSlotLabel}`);
-//   }
-
-//   private buildWeekDays(monthDate: Date, startDay: number): DayItem[] {
-//     // نعمل 7 أيام شكلهم زي اللي في التصميم
-//     const year = monthDate.getFullYear();
-//     const month = monthDate.getMonth();
-//     const base = new Date(year, month, startDay);
-
-//     const labels = ['Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'];
-
-//     return labels.map((label, idx) => {
-//       const d = new Date(base);
-//       d.setDate(base.getDate() + idx);
-//       return { label, day: d.getDate(), date: d };
-//     });
-//   }
-// }
 
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AppointmentSuccessModalComponent } from '../../../modal/appointment-success-modal.component/appointment-success-modal.component';
 
 type DayItem = { label: string; day: number; date: Date };
 type SlotItem = { id: string; label: string; available: boolean; time24: string };
@@ -194,5 +109,6 @@ private emitSelectedDate() {
     return { label, day: d.getDate(), date: d };
   });
 }
+
 
 }

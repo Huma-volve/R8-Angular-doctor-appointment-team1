@@ -3,7 +3,7 @@ import { DoctorProfileCardComponent } from './../../components/doctor-profile-ca
 import { AppointmentSchedulerComponent } from './../../components/appointment-scheduler/appointment-scheduler';
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { finalize } from 'rxjs';
 import { BookingApiService } from '../../booking-api.service';
 
@@ -11,7 +11,7 @@ import { switchMap, map, filter, shareReplay } from 'rxjs';
 @Component({
   selector: 'app-appointment-page',
   standalone: true,
-  imports: [CommonModule, AppointmentSchedulerComponent, DoctorProfileCardComponent, ReviewsSectionComponent],
+  imports: [CommonModule, AppointmentSchedulerComponent, DoctorProfileCardComponent, ReviewsSectionComponent, RouterLink],
   templateUrl: './appointment-page.html',
   styleUrls: ['./appointment-page.scss'],
 })

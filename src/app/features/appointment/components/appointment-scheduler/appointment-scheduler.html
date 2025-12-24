@@ -50,17 +50,18 @@
       <div class="selected-line d-flex align-items-center gap-2">
         <span class="calendar-icon">📅</span>
         <span class="fw-semibold">
-          {{ selectedDate | date:'EEEE, MMMM d' }}
+          {{ selectedDate | date : 'EEEE, MMMM d' }}
           <ng-container *ngIf="selectedSlotId"> - {{ selectedSlotLabel }}</ng-container>
         </span>
       </div>
 
-<button class="btn btn-outline-primary rounded-3 px-4"
+      <button
+        class="btn btn-outline-primary rounded-3 px-4"
         (click)="onBookClick()"
-        [disabled]="!selectedSlotId">
-  Book
-</button>
+        [disabled]="!selectedSlotId"
+      >
+        Book
+      </button>
     </div>
   </div>
 </div>
-

@@ -24,24 +24,11 @@
     </div>
   </div>
 </div>
-
-<!-- <div class="container py-4">
-  <div class="row g-4">
-    <div class="col-12 col-lg-8">
-      <app-appointment-scheduler></app-appointment-scheduler>
-      <div class="mt-4">
-        <app-reviews-section></app-reviews-section>
-      </div>
-    </div>
-
-    <div class="col-12 col-lg-4">
-      <ng-container *ngIf="doctor$ | async as doctor; else loadingTpl">
-        <app-doctor-profile-card [doctor]="doctor"></app-doctor-profile-card>
-      </ng-container>
-
-      <ng-template #loadingTpl>
-        <div class="text-muted">Loading doctor...</div>
-      </ng-template>
-    </div>
-  </div>
-</div> -->
+<!-- <app-appointment-success-modal
+  *ngIf="showSuccess"
+  [doctorName]="doctor.name"
+  [date]="appointmentDate"
+  [time]="appointmentTime"
+  (done)="onDone()"
+  (edit)="onEdit()"
+></app-appointment-success-modal> -->

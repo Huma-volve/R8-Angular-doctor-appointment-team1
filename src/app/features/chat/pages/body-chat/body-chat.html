@@ -17,10 +17,10 @@
         />
       </div>
     </div>
-    } @else if(msg.type == 'video') {
+    }@else if(msg.type == 'video') {
     <div class="d-flex mb-3 justify-content-end">
-      <div class="d-flex mb-3 justify-content-end">
-        <div class="message-bubble p-1 shadow-sm bg-light-gray patient-msg">
+      <div class="d-flex mb-3 justify-content-center p-4">
+        <div class="message-bubble p-1 bg-light-gray">
           <video [src]="msg.body" controls class="rounded" style="max-width: 250px"></video>
         </div>
       </div>

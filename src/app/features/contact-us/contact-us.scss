@@ -1,0 +1,41 @@
+
+.contact-caption{
+    h3{
+        font-size: 40px;
+        font-weight: 500;
+        font-family: var(--secondary-Font);
+    }
+    p{
+        width: 320px;
+        color: #4e5256;
+        font-size: 16px;
+        font-family:var(--secondary-Font) ;
+    }
+    ul{
+        list-style-type: none;
+        padding-left: unset !important;
+
+    }
+    li{
+       margin: 20px 0;
+       font-weight: 500;
+       font-size: 14px;
+
+       span i{
+        color: var(--Blue-Background-Color);
+        margin-right:10px;
+       }
+    }
+}
+
+.contact-form{
+    width:450px;
+ button{
+        background-color: var(--Blue-Background-Color) !important;
+        color: white;
+    }
+    input{
+        padding: 10px;
+    }
+}
+   

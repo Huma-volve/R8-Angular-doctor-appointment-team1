@@ -1,0 +1,212 @@
+
+<section class="hero">
+
+  <!-- Background circles -->
+  <!-- <div class="bg-circle circle-1"></div> -->
+  <div class="bg-circle circle-2"></div>
+  <div class="bg-circle circle-3"></div>
+
+  <div class="hero-content">
+
+  <!-- Badge -->
+  <span class="badge">
+    <i class="fa-solid fa-star"></i>
+    Upgrade your account
+  </span>
+
+  <h1>
+    Find and book top doctors near you
+  </h1>
+
+  <pre class="hero-text">
+    Easily find top-rated specialists near you and book
+    appointments in just a few clicks. Whether you need
+    an in-person visit consultation, we're here to connect
+    you with the right care—fast, simple, and secure.
+  </pre>
+
+
+
+   <div class="hero-stats">
+      <img src="/assets/ana-itonishvili-Fyl8sMC2j2Q-unsplash.jpg"  class="users" alt="users" />
+      <span>10k+ happy patients</span>
+    </div>
+  </div>
+
+
+  <!-- Buttons -->
+  <div class="hero-actions">
+    <button class="btn-primary">Get started</button>
+
+    <button class="btn-outline">
+      <i class="fa-regular fa-calendar"></i>
+      Book Appointment
+    </button>
+  </div>
+
+  <!-- How it works -->
+  <h2 class="how-title">How it works</h2>
+
+  <div class="cards">
+  <div class="card">
+    <img src="/assets/Frame 1000001221.png" alt="card image" />
+  </div>
+
+  <div class="card">
+    <img src="/assets/Frame 1000001222.png" alt="card image" />
+  </div>
+
+  <div class="card">
+    <img src="/assets/Frame 1000001223.png" alt="card image" />
+  </div>
+</div>
+</section>
+
+
+
+<!-- find-care.component.html -->
+<section class="heros">
+  <div class="content">
+    <h1>Find Care Near You<br />in Seconds</h1>
+    <p>
+      Allow location access or choose your city to instantly discover trusted
+      doctors and clinics around you—quick, easy, and local.
+    </p>
+
+    <button class="cta" (click)="goToSearch()">
+      <span class="icon">
+        <i class="fa-solid fa-magnifying-glass" style="color: #2563eb;"></i>
+      </span>
+      Search by location
+    </button>
+  </div> <!-- close content div -->
+  
+
+  <div class="map-card" (click)="goToSearch()">
+    <div id="map"></div>
+  </div>
+</section>
+
+
+
+<section class="top-doctors">
+  <div class="header">
+    <div class="text">
+      <h2>Top-Rated Doctors Chosen by Patients</h2>
+      <p>
+        Explore our highest-rated doctors, trusted by real patients for their
+        expertise, care, and service. Book with confidence today.
+      </p>
+    </div>
+
+    <button class="view-all" (click)="goToSearch()">View All</button>
+  </div>
+
+  <div class="doctors">
+    <div class="doctor-card" *ngFor="let doc of doctors">
+      <!-- LEFT IMAGE -->
+      <img class="avatar" [src]="doc.image" alt="doctor" />
+
+      <!-- RIGHT CONTENT -->
+      <div class="info">
+        <h3>{{ doc.name }}</h3>
+        <p class="specialty">{{ doc.specialty }} | {{ doc.hospital }}</p>
+
+        <div class="meta">
+          <span class="rating">⭐ {{ doc.rating }}</span>
+          <span class="time">🕘 {{ doc.time }}</span>
+        </div>
+
+        <div class="footer">
+          <div class="price">
+            <span>Price/hour</span>
+            <strong>${{ doc.price }}</strong>
+          </div>
+
+          <button class="book" (click)="goToSearch()">
+            Book appointment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="reviews-section">
+  <div class="container">
+
+    <h2 class="title">
+      Reviews<br />
+      <span>That Speak for Themselves</span>
+    </h2>
+
+    <div class="stars">
+      <span *ngFor="let star of stars">★</span>
+    </div>
+
+    <pre class="review-text">
+      “Quick and easy booking! I found a 
+      great dermatologist near me and
+      booked an appointment in just a few minutes.”
+    </pre>
+
+   <div class="avatars">
+  <img
+    *ngFor="let avatar of avatars; let i = index"
+    [src]="avatar"
+    [ngClass]="'avatar avatar-' + i"
+    alt="User avatar"
+  />
+</div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+
+    <span class="badge">Frequently Asked Questions</span>
+
+    <h2 class="title">
+      Got Questions ? We’ve got Answers!
+    </h2>
+
+    <div class="faq-list">
+      <div class="faq-item" *ngFor="let faq of faqs">
+        <div class="faq-question">
+          <span>{{ faq.question }}</span>
+          <span class="icon">+</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="app-download-section">
+  <div class="app-download-card">
+
+    <!-- LEFT CONTENT -->
+    <div class="app-content">
+      <h2>Your Health, One Tap Away</h2>
+
+      <p>
+        Book appointments, chat with doctors, and manage your health
+        anytime — right from your phone. Download the app now and stay
+        connected wherever you are.
+      </p>
+
+      <div class="store-buttons">
+        <img src="/assets/Frame 1000001251.png" alt="Google Play">
+        <img src="/assets/Frame 1000001250.png" alt="Apple Store">
+      </div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="app-image">
+      <img src="/assets/iPhone 12 Pro@2x.png" alt="App Preview">
+    </div>
+
+  </div>
+</section>

@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://round8-backend-team-one.huma-volve.com',
+  apiUrl: 'https://round8-cure-php-team-two.huma-volve.com/api/v1'
 };

@@ -18,17 +18,18 @@
 
 <!-- DROPDOWN MENU -->
 <div class="menu-dropdown" *ngIf="showMenu">
-  <button class="menu-btn">
-    <i class="fa-solid fa-house"></i>
-    Home
-  </button>
+ <button class="menu-btn" routerLink="/" (click)="goTohome()">
+  <i class="fa-solid fa-house"></i>
+  Home
+</button>
 
-  <button class="menu-btn">
+
+  <button class="menu-btn" (click)="goTobooking()">
     <i class="fa-solid fa-calendar-check"></i>
     Bookings
   </button>
 
-  <button class="menu-btn">
+  <button class="menu-btn" (click)="goTochat()">
     <i class="fa-solid fa-comments"></i>
     Chat
   </button>

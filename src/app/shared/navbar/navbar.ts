@@ -32,4 +32,14 @@ export class Navbar {
 toggleMenu() {
   this.showMenu = !this.showMenu;
 }
+
+goTohome(){
+  this.router.navigate(['/']);
+}
+goTobooking(){
+  this.router.navigate(['/booking']);
+}
+goTochat(){
+  this.router.navigate(['/chat']);
+}
 }

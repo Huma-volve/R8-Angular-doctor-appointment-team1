@@ -20,7 +20,9 @@ import { Notification } from './notification/notification';
 import { ProfilePopupComponent } from './profile-popup/profile-popup';
 
 export const routes: Routes = [
- { path: '', component:Home},
+ { path: '', component:Home ,pathMatch: 'full',
+  },
+
     {path:'notifications',component:Notification},
     {path:'ProfilePopup',component:ProfilePopupComponent},
     {path:'setting-popup',component:SettingPopup},

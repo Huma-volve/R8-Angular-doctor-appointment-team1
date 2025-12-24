@@ -1,26 +1,55 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Auth1 } from '../core/services/auth1';
 
 @Component({
   selector: 'app-profile-popup',
-  imports: [],
+  standalone: true,
   templateUrl: './profile-popup.html',
-  styleUrl: './profile-popup.scss',
+  styleUrls: ['./profile-popup.scss'],
 })
-export class ProfilePopup {
-@Output() close = new EventEmitter<void>();
-  constructor(private router: Router) {}
+export class ProfilePopupComponent {
+  @Output() close = new EventEmitter<void>();
+
+  constructor(
+    private router: Router,
+     private authService: Auth1
+  ) {}
+
+
+  goToPayment() {
+    this.router.navigate(['/payment']);
+    this.close.emit();
+  }
 
   goToSettings() {
-    this.close.emit(); // close popup
-    this.router.navigate(['/setting-popup']); // navigate
+    this.router.navigate(['/setting-popup']);
+    this.close.emit();
   }
 
-    goToPayment() {
-    this.close.emit();             // close the popup first
-    this.router.navigate(['/payment']);  // navigate to PaymentComponent
-  }
-   goToPrivacyPolicy() {
+  goToPrivacyPolicy() {
     this.router.navigate(['/privacy-policy']);
+    this.close.emit();
+  }
+
+  // 🔴 LOGOUT FUNCTION
+  logout() {
+    this.authService.logout().subscribe({
+      next: () => {
+        // ✅ Clear local storage
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+
+        // ✅ Close popup
+        this.close.emit();
+
+        // ✅ Redirect to register/login page
+        this.router.navigate(['/register']);
+        // أو '/login' حسب عندك
+      },
+      error: (err) => {
+        console.error('Logout failed', err);
+      },
+    });
   }
 }

@@ -110,4 +110,7 @@ export class Home implements AfterViewInit {
   goToSearch() {
     this.router.navigate(['/search-doctor']);
   }
+   goToSearch1() {
+    this.router.navigate(['/Dcard']);
+  }
 }

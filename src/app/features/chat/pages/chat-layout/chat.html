@@ -1,19 +1,26 @@
-<section class="container-fluid mt-5">
-  <div class="row chat-wrapper ps-5">
-    <div class="col-3  pe-0">
-            <app-chat-list></app-chat-list>
+<section class="container-fluid py-2">
+  <div class="row chat-wrapper">
+    <div class="col-12 col-md-3 pe-0" [class.d-none]="isMobileChatActive" [class.d-md-block]="true">
+      <app-chat-list></app-chat-list>
     </div>
-    <div class="chat-det col-9  p-0 bg-secondary">
+    <div
+      class="chat-det col-12 col-md-9 p-0 bg-secondary"
+      [class.d-none]="!isMobileChatActive"
+      [class.d-md-block]="true"
+    >
       <div class="inner-chat-del d-flex flex-column">
-        <div class="head">
-          <app-title-chat></app-title-chat>
+        <div class="head d-flex align-items-center">
+          <button class="btn d-md-none text-black" (click)="backToList()">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <app-title-chat class="flex-grow-1"></app-title-chat>
         </div>
         <div class="body bg-white flex-grow-1">
           <app-body-chat></app-body-chat>
         </div>
-       <div class="footer-chat">
+        <div class="footer-chat">
           <div class="chat-input-container row px-2">
-            <div class="input-wrapper col-10">
+            <div class="input-wrapper col-8">
               <input
                 #messageInput
                 type="text"
@@ -31,10 +38,9 @@
                 </button>
               </div>
             </div>
-
             <button
               type="button"
-              class="mic-btn col-1 p-0"
+              class="mic-btn col-1 p-0 mx-1"
               [class.recording]="isRecording"
               (mousedown)="startRecording()"
               (mouseup)="stopRecording()"
@@ -46,7 +52,6 @@
                 [class.fa-stop]="isRecording"
               ></i>
             </button>
-
             <button
               class="mic-btn col-1 p-0"
               (click)="send(messageInput.value); messageInput.value = ''"

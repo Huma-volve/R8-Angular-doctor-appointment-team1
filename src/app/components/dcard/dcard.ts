@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { Dmap } from '../dmap/dmap';
 import { DocService } from './service/doc-service';
 
 @Component({
@@ -19,7 +18,7 @@ export class Dcard implements OnInit {
   selectedSpecialty: string | null = null;
 
   @ViewChild('buttonsWrapper', { static: false }) buttonsWrapper!: ElementRef;
-    scrollAmount = 150; // المسافة اللي هيتم تحريك الشريط بيها بالبيكسل
+    scrollAmount = 150; 
 
 
   constructor(private router: Router,
@@ -44,19 +43,6 @@ export class Dcard implements OnInit {
     this.router.navigateByUrl(`/dmap`)
   }
 
-  // scrollLeft() {
-  //   const container = document.getElementById('buttonsWrapper');
-  //   if (container) {
-  //     container.scrollBy({ left: -100, behavior: 'smooth' });
-  //   }
-  // }
-
-  // scrollRight() {
-  //   const container = document.getElementById('buttonsWrapper');
-  //   if (container) {
-  //     container.scrollBy({ left: 100, behavior: 'smooth' });
-  //   }
-  // }
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
@@ -114,7 +100,7 @@ getThemAll() {
 }
 // لحد هنا عشان اعرض كل ال cards
 
-// for today and tomorrow
+// for today and tomorrow ya lolo
 getFormattedDate(offsetDays: number): string {
   const date = new Date();
   date.setDate(date.getDate() + offsetDays);

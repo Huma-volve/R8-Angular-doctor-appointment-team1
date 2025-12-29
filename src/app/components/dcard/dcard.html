@@ -1,15 +1,15 @@
 <div class="container d-flex justify-content-between pt-2 flex-shrink-0 ">
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
-
       <div class="col-2 d-flex">
-        <button type="submit"
-          class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-start rounded-end-0">
+        <button type="submit" class="btn btn-outline-secondary d-flex align-items-center 
+          gap-2 rounded-start rounded-end-0">
           <i class="fa-solid fa-filter"></i>
           <span>Filter</span>
         </button>
-        <button (click)="toggleSidebar()" type="button"
-          class="btn btn-outline-secondary rounded-end rounded-start-0">&gt;</button>
+        <button (click)="toggleSidebar()" type="button" class="btn btn-outline-secondary rounded-end rounded-start-0">
+          &gt;
+        </button>
       </div>
 
       <div class="col-8">
@@ -17,17 +17,41 @@
           <input class="form-control" type="text" placeholder="Search Doctors" (input)="onSearch($event)" />
         </form>
       </div>
-
       <div class="col-2">
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-2" routerLink="/dmap"
-          (click)="moveMe()">
+        <button class="btn btn-outline-secondary d-flex 
+        align-items-center gap-2 rounded-2" routerLink="/dmap" (click)="moveMe()">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Map</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+   <div class="container">
+    <div class="row align-items-center flex-nowrap">
+      <div class="col-12 col-md-3 d-flex">
+        <button type="submit" class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-start rounded-end-0">
+          <i class="fa-solid fa-filter"></i>
+          <span>Filter</span>
+        </button>
+        <button (click)="toggleSidebar()" type="button" class="btn btn-outline-secondary rounded-end rounded-start-0">
+          &gt;
+        </button>
+      </div>
+
+      <div class="col-12 col-md-6 mt-2 mt-md-0">
+        <form>
+          <input class="form-control" type="text" placeholder="Search Doctors" (input)="onSearch($event)" />
+        </form>
+      </div>
+
+      <div class="col-12 col-md-3 mt-2 mt-md-0">
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-2" routerLink="/dmap" (click)="moveMe()">
           <i class="fa-solid fa-map-location-dot"></i>
           <span>Map</span>
         </button>
       </div>
     </div>
   </div>
-
   <div class="d-flex">
     <nav [class.sidebar-open]="isSidebarOpen" class="sidebar margin-set">
       <div class="px-5 d-flex flex-column gap-4">
@@ -47,14 +71,12 @@
               Tomorrow
             </label>
           </div>
-
         </div>
         <div class="container">
           <p>Gender</p>
           <div class="d-flex gap-3">
             <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
             <label class="btn btn-primary" for="option1">Male</label>
-
             <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
             <label class="btn  btn-outline-secondary" for="option2">Female</label>
           </div>
@@ -72,12 +94,11 @@
         </div>
         <div class="container">
           <div class="dropdown w-100">
-            <button class="btn border-0 dropdown-toggle d-flex justify-content-between align-items-center 
-                           px-1 py-2 shadow-none focus-ring-0 w-100" type="button" data-bs-toggle="dropdown"
+            <button class="btn border-0 dropdown-toggle d-flex justify-content-between align-items-center px-1 py-2 shadow-none focus-ring-0 w-100" type="button" data-bs-toggle="dropdown"
               data-bs-auto-close="outside">
               <span class="me-4">Sort</span>
             </button>
-            <div class="container">
+            <div class="container"> 
               <ul class="dropdown-menu border-0 p-2 w-100">
                 <li class="form-check mb-3">
                   <input class="form-check-input" type="radio" name="sortOption" id="opt1"
@@ -101,14 +122,13 @@
                   </label>
                 </li>
               </ul>
-            </div>
+           </div>
           </div>
         </div>
       </div>
     </nav>
   </div>
 </div>
-
 <div [class.content-shrink]="isSidebarOpen" class="content flex-grow-1 p-3">
   <div class="container">
     <div>
@@ -121,52 +141,63 @@
       </button>
       <div #buttonsWrapper id="buttonsWrapper" class="d-flex flex-nowrap overflow-hidden gap-2 flex-grow-1"
         style="scroll-behavior: smooth;">
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3" routerLink="/dcard/all"
-          (click)="getThemAll()">
+        <button class="btn btn-outline-secondary 
+        d-flex align-items-center gap-2 rounded-3" routerLink="/dcard/all" (click)="getThemAll()">
           <i class="fa-solid fa-user-doctor"></i>
           <span>All</span>
         </button>
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+        <button class="btn btn-outline-secondary 
+        d-flex align-items-center gap-2 rounded-3">
           <i class="fa-solid fa-tooth"></i>
           <span>Dentist</span>
         </button>
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+        <button class="btn btn-outline-secondary 
+        d-flex align-items-center gap-2 rounded-3">
           <i class="fa-solid fa-x-ray"></i>
           <span>Radiologist</span>
         </button>
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+        <button class="btn btn-outline-secondary 
+        d-flex align-items-center gap-2 rounded-3">
           <i class="fa-solid fa-truck-medical"></i>
           <span>Surgeon</span>
         </button>
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+        <button class="btn btn-outline-secondary 
+        d-flex align-items-center gap-2 rounded-3">
           <i class="fa-solid fa-heart-circle-bolt"></i>
           <span>Cardiologist</span>
         </button>
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+        <button class="btn btn-outline-secondary 
+        d-flex align-items-center gap-2 rounded-3">
           <i class="fa-solid fa-hand-dots me-2"></i>
           <span>Dermatologist</span>
         </button>
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+        <button class="btn btn-outline-secondary
+         d-flex align-items-center gap-2 rounded-3">
           <i class="fa-solid fa-ear-listen"></i>
           <span>ENT</span>
         </button>
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+        <button class="btn btn-outline-secondary 
+        d-flex align-items-center gap-2 rounded-3">
           <i class="fa-solid fa-brain"></i>
           <span>Neurologist</span>
         </button>
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+        <button class="btn btn-outline-secondary 
+        d-flex align-items-center gap-2 rounded-3">
           <i class="fa-solid fa-stethoscope"></i>
           <span>General Practitioner</span>
         </button>
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+        <button class="btn btn-outline-secondary
+         d-flex align-items-center gap-2 rounded-3">
           <i class="fa-solid fa-eye"></i>
           <span>Ophthalmologist</span>
         </button>
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+        <button class="btn btn-outline-secondary 
+        d-flex align-items-center gap-2 rounded-3">
           <i class="fa-solid fa-eye"></i>
           <span>Ophthalmologist</span>
         </button>
-        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+        <button class="btn btn-outline-secondary 
+        d-flex align-items-center gap-2 rounded-3">
           <i class="fa-solid fa-lungs"></i>
           <span>Pulmonologist</span>
         </button>
@@ -176,7 +207,6 @@
       </button>
     </div>
   </div>
-
   <!-- Cards Section -->
   <div class="container mt-4">
     <div class="row">
@@ -197,7 +227,8 @@
                   </div>
                   <div>
                     <i class="fa-regular fa-clock" style="color: #77797e;"></i>
-                    <span class="text-dark"> {{doctor.start_time}} </span>
+                    <span class="text-dark">
+                      {{doctor.start_time}} </span>
                   </div>
                 </div>
               </div>
@@ -208,15 +239,18 @@
                 <span class="text-dark">Price </span>
                 <span class="text-muted">/hour</span>
               </div>
-              <p class="text-danger">{{doctor.session_price | currency}}</p>
+              <p class="text-danger">
+                {{doctor.session_price | currency}}</p>
             </div>
-            <button (click)="doneApp()" class="btn btn-primary w-100 rounded-6">Book an appointment</button>
+            <button (click)="doneApp()" class="btn btn-primary w-100 rounded-6">
+              Book an appointment</button>
           </div>
         </div>
       </div>
     </div>
     <div class="text-center">
-      <button class="btn btn-outline-primary w-25 py-3 rounded-3">Next Page</button>
+      <button class="btn btn-outline-primary w-25 py-3 rounded-3">
+        Next Page</button>
     </div>
   </div>
 </div>

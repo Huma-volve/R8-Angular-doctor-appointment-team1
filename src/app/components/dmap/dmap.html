@@ -1,9 +1,8 @@
-<!-- dmap.component.html -->
-<div class="container">
+<div class="container" *ngIf="showResults" >
   <div class="row">
     <div class="d-flex justify-content-between align-items-center w-100">
       <h3 class=" mb-0">{{ doctors.length }} Results</h3>
-      <button type="button" class=" btn-close btn-dark fs-2 mb-0" aria-label="Close"></button>
+      <button type="button" class=" btn-close btn-dark fs-2 mb-0" aria-label="Close" (click)="closeResults()"></button>
     </div>
   </div>
 </div>
@@ -35,30 +34,13 @@
       </div>
     </div>
     <div class="col-8">
-      <div class="container-fluid p-0">
-<iframe class="w-100 rounded-5" style="height: 100vh; border: 0;"
-    src="https://www.google.com/maps?q=30.0444,31.2357&z=14&output=embed" allowfullscreen>
-</iframe>
-<!-- <google-map [center]="center" [zoom]="zoom" height="500px" width="100%"> -->
-  <!-- <map-marker *ngFor="let marker of markers" [position]="marker.position" [title]="marker.title"></map-marker> -->
-<!-- </google-map> -->
- <google-map
-  [center]="center"
-  [zoom]="zoom"
-  height="500px"
-  width="100%"
->
-  <map-marker
-    *ngFor="let marker of markers"
-    [position]="marker.position"
-    [title]="marker.title"
-  >
-  </map-marker>
-</google-map>
+      <div class="container-fluid p-0 mb-5">
+       <div class="map-card w-100 rounded-5" (click)="goToSearch()">  
+    <div id="map"></div>
+  </div>
 
-<!-- <google-map [center]="center" [zoom]="zoom" height="500px" width="100%"></google-map> -->
 
-      </div>
+       </div>
     </div>
   </div>
 </div>

@@ -74,7 +74,8 @@ export class Home implements AfterViewInit {
   ngAfterViewInit(): void {
     this.initMap();
   }
-
+ 
+  // مهم
   initMap() {
     this.map = L.map('map', { zoomControl: false });
 

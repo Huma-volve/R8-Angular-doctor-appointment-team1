@@ -8,21 +8,26 @@ import { Observable } from 'rxjs';
 })
 export class DocService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllDoctors() {
-        return this.http.get(environment.baseUrl + `/api/doctors`,
+    return this.http.get(environment.baseUrl + `/api/doctors`,
     );
   }
 
-  getDoctorById(id:number) :Observable<any> {
-  return this.http.get(`${environment.baseUrl}/api/doctors/${id}`);
+  getDoctorsAv(id: number) : Observable<any> {
+    return this.http.get(environment.baseUrl + `/api/doctors/${id}/availability`,
+    );
+  }
+  getDoctorById(id: number): Observable<any> {
+    return this.http.get(`${environment.baseUrl}/api/doctors/${id}`);
   }
 
-getDoctorByName(name: string): Observable<any> {
-  return this.http.get(
-    `${environment.baseUrl}/api/doctors?name=${name}`
-  );
-}
+  getDoctorByName(name: string): Observable<any> {
+    return this.http.get(
+      `${environment.baseUrl}/api/doctors?name=${name}`
+    );
+  }
+
 
 }

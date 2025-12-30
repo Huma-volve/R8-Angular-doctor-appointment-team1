@@ -38,7 +38,16 @@ export class Dcard implements OnInit {
         console.error(err);
       }
     });
+
+    this.docService.getDoctorsAv(3).subscribe({
+    next:(res:any) => {
+      console.log(res.data);
+    },
+    error: (err) => console.log(err)
+  })
   }
+
+
   moveMe() {
     this.router.navigateByUrl(`/dmap`)
   }
@@ -83,12 +92,22 @@ export class Dcard implements OnInit {
 // من اول هنا عشان اعرض ال cards
 loadDoctors() {
   this.docService.getAllDoctors().subscribe({
-    next: (data: any) => {
-      this.allDoctors = data;     // الأصل
-      this.doctors = data;        // اللي بيتعرض
+    next: (res: any) => {
+      console.log(res.data);
+      this.allDoctors = res.data;     // الأصل
+      this.doctors = res.data;        // اللي بيتعرض
     },
     error: (err) => console.error(err)
   });
+}
+
+loadDoctorsAv(){
+  // this.docService.getDoctorsAv(1).subscribe({
+  //   next:(res:any) => {
+  //     console.log(res.data);
+  //   },
+  //   error: (err) => console.log(err)
+  // })
 }
 filterBySpecialty(specialtyName: string) {
   this.doctors = this.allDoctors.filter(

@@ -20,6 +20,7 @@ import { Notification } from './notification/notification';
 import { ProfilePopupComponent } from './profile-popup/profile-popup';
 
 export const routes: Routes = [
+   {path:'login',component:Login},
  { path: '', component:Home ,pathMatch: 'full',
   },
 
@@ -29,7 +30,8 @@ export const routes: Routes = [
     {path:'passwordsetting',component:PasswordSetting},
     {path:'payment',component:Payment},
     {path:'privacy-policy',component:PrivacyPolicy},
-    {path:'add-new-card',component:AddNewCardComponent}
+    {path:'add-new-card',component:AddNewCardComponent},
+
 
 
 

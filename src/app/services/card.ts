@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CardService {
   private apiUrl =
-    'https://round8-backend-team-one.huma-volve.com';
+    'https://round8-backend-team-one.huma-volve.com/api/saved-cards';
 
   constructor(private http: HttpClient) {}
 

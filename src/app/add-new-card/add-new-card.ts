@@ -23,31 +23,52 @@ export class AddNewCardComponent {
   };
 
   saveCard(): void {
-  console.log('Save button clicked ✅'); // <- check this first
+    // ✅ Validate required fields
+    if (!this.card.last_four || !this.card.exp_month || !this.card.exp_year) {
+      alert('Please fill in all required fields.');
+      return;
+    }
 
-  const payload = {
-    brand: this.card.brand,
-    last_four: this.card.last_four.slice(-4),
-    exp_month: Number(this.card.exp_month),
-    exp_year: Number(this.card.exp_year),
-    is_default: this.card.is_default,
-  };
+    // ✅ Validate expiry month
+    const month = Number(this.card.exp_month);
+    if (month < 1 || month > 12) {
+      alert('Expiry month must be between 1 and 12.');
+      return;
+    }
 
-  console.log('PAYLOAD 👉', payload);
+    // ✅ Validate expiry year
+    const year = Number(this.card.exp_year);
+    const currentYear = new Date().getFullYear();
+    if (year < 2025) {
+      alert('Expiry year must be at least 2025.');
+      return;
+    }
 
-  this.cardService.saveCard(payload).subscribe({
-    next: (res) => {
-      console.log('SUCCESS ✅', res);
-      alert('Card saved successfully');
-      this.router.navigate(['/payment']);
-    },
-    error: (err) => {
-      console.error('FAILED ❌', err);
-      alert(err.error?.message || 'API Error');
-    },
-  });
-}
-goBackToPayment(){
-this.router.navigate(['payment']);
-}
+    const payload = {
+      provider_token: '263|i6JNzMPzQtabOdDGxjVx6SZFdSy4CNCwTzZHMVfP8819a2ee',
+      brand: this.card.brand,
+      last_four: this.card.last_four.slice(-4),
+      exp_month: month,
+      exp_year: year,
+      is_default: this.card.is_default,
+    };
+
+    console.log('PAYLOAD 👉', payload);
+
+    this.cardService.saveCard(payload).subscribe({
+      next: (res) => {
+        console.log('SUCCESS ✅', res);
+        alert('Card saved successfully');
+        this.router.navigate(['/payment']);
+      },
+      error: (err) => {
+        console.error('FAILED ❌', err);
+        alert(err.error?.message || 'API Error');
+      },
+    });
+  }
+
+  goBackToPayment(): void {
+    this.router.navigate(['/payment']);
+  }
 }

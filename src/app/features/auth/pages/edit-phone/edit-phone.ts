@@ -1,4 +1,6 @@
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../../core/services/auth';
 import { Component, inject } from '@angular/core';
@@ -6,9 +8,10 @@ import { FormHeader } from "../../components/form-header/form-header";
 
 @Component({
   selector: 'app-edit-phone',
-  imports: [FormHeader,FormsModule],
+  standalone: true, // mark as standalone if using imports
+  imports: [CommonModule, FormsModule],
   templateUrl: './edit-phone.html',
-  styleUrl: './edit-phone.scss',
+  styleUrls: ['./edit-phone.scss'], // fixed
 })
 export class EditPhone {
 

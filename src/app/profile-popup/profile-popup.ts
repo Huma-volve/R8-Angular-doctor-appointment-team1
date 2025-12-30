@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth1 } from '../core/services/auth1';
+import { Logout } from '../logout';
 
 @Component({
   selector: 'app-profile-popup',
@@ -13,10 +14,25 @@ export class ProfilePopupComponent {
 
   constructor(
     private router: Router,
-     private authService: Auth1
+     private authService: Auth1,
+     private logoutService:Logout
   ) {}
 
-
+  logout() {
+    if (confirm('Are you sure you want to logout?')) {
+      this.logoutService.logout().subscribe({
+        next: (res) => {
+          console.log('Logged out:', res);
+          this.logoutService.clearSession();
+          this.router.navigate(['/login']); // redirect to login page
+        },
+        error: (err) => {
+          console.error('Logout failed:', err);
+          alert(err.error?.message || 'Logout failed!');
+        }
+      });
+    }
+  }
   goToPayment() {
     this.router.navigate(['/payment']);
     this.close.emit();
@@ -32,24 +48,5 @@ export class ProfilePopupComponent {
     this.close.emit();
   }
 
-  // 🔴 LOGOUT FUNCTION
-  logout() {
-    this.authService.logout().subscribe({
-      next: () => {
-        // ✅ Clear local storage
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
 
-        // ✅ Close popup
-        this.close.emit();
-
-        // ✅ Redirect to register/login page
-        this.router.navigate(['/register']);
-        // أو '/login' حسب عندك
-      },
-      error: (err) => {
-        console.error('Logout failed', err);
-      },
-    });
-  }
 }

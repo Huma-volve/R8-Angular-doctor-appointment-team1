@@ -14,7 +14,7 @@ import { Home } from './home/home';
 import { SettingPopup } from './setting-popup/setting-popup';
 import { Payment } from './payment/payment';
 import { PrivacyPolicy } from './privacy-policy/privacy-policy';
-import { AddNewCard } from './add-new-card/add-new-card';
+import { AddNewCardComponent } from './add-new-card/add-new-card';
 import { PasswordSetting } from './password-setting/password-setting';
 import { Notification } from './notification/notification';
 import { ProfilePopupComponent } from './profile-popup/profile-popup';
@@ -29,15 +29,7 @@ export const routes: Routes = [
     {path:'passwordsetting',component:PasswordSetting},
     {path:'payment',component:Payment},
     {path:'privacy-policy',component:PrivacyPolicy},
-    { path:'add-new-card',component:AddNewCard },
-  //   {
-  //   path: 'register',
-  //   loadComponent: () =>
-  //     import('./features/auth1/register/register.component')
-  //       .then(m => m.RegisterComponent),
-  // },
-
-
+    {path:'add-new-card',component:AddNewCardComponent}
 
 
 

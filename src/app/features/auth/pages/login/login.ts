@@ -38,7 +38,7 @@ authService = inject(AuthService);
             console.log(res);
             this.resultMessage = res.message; 
              this.authService.setToken(res.data?.token );
-             this.router.navigate(['/admin/profile-details']);
+             this.router.navigate(['/profile-details']);
              this.loginForm.reset(); 
              this.loading = false; 
          },

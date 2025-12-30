@@ -8,10 +8,11 @@ import { finalize } from 'rxjs';
 import { BookingApiService } from '../../booking-api.service';
 
 import { switchMap, map, filter, shareReplay } from 'rxjs';
+import { Doctors } from '../../../doctors/services/doctors';
 @Component({
   selector: 'app-appointment-page',
   standalone: true,
-  imports: [CommonModule, AppointmentSchedulerComponent, DoctorProfileCardComponent, ReviewsSectionComponent, RouterLink],
+  imports: [CommonModule, AppointmentSchedulerComponent, DoctorProfileCardComponent, ReviewsSectionComponent, RouterLink ],
   templateUrl: './appointment-page.html',
   styleUrls: ['./appointment-page.scss'],
 })
@@ -19,8 +20,6 @@ export class AppointmentPageComponent {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private bookingApi = inject(BookingApiService);
-    // private doctorsApi = inject(DoctorsApiService);
-
 
   doctorId = Number(this.route.snapshot.paramMap.get('doctorId'));
 

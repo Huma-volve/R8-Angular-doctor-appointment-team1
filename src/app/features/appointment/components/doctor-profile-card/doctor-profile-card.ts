@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { Data } from '../../booking-api.service';
 @Component({
   selector: 'app-doctor-profile-card',
   standalone: true,
@@ -23,3 +23,5 @@ export class DoctorProfileCardComponent {
     address: '129, El-Nasr Street, Cairo, Egypt',
   };
 }
+
+

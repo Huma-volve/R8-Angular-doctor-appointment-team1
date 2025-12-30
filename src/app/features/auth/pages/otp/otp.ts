@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Auth } from './../../../../core/services/auth';
+import { AuthService } from './../../../../core/services/auth';
 import { Component, inject ,OnInit} from '@angular/core';
 import { FormHeader } from "../../components/form-header/form-header";
 import { FormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './otp.scss',
 })
 export class Otp {
-    auth = inject(Auth);
+    auth = inject(AuthService);
     fromPage!: string;
     router = inject(Router);
     statusMessage:string = ' ';

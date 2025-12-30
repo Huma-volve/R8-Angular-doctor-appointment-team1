@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { Api } from './../../../../core/services/api';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject,OnInit } from '@angular/core';
-declare const google: any;
+import { Component, inject, OnInit, Input } from '@angular/core';
+
+import { AuthService } from './../../../../core/services/auth';
 
 @Component({
   selector: 'app-google-login',
@@ -10,36 +12,18 @@ declare const google: any;
   styleUrl: './google-login.scss',
 })
 export class GoogleLogin {
-  http = inject(HttpClient);
-  api = inject(Api);
-  GOOGLE_CLIENT_ID     = '80775955360-493bcovp441v7djo0cto3b05jh52noci.apps.googleusercontent.com';
 
-   ngOnInit()
-   {
-    google.accounts.id.initialize({
-      client_id: this.GOOGLE_CLIENT_ID,
-      callback: (response: any) => this.handleCredential(response)
+   authService = inject(AuthService);
+   router = inject(Router)
+     @Input() label!: string;
+  login() {
+  this.authService.loginWithGoogle()
+    .then((res:any) => {
+      console.log(res.user); // login أو register تلقائي
+      this.authService.setToken(res.user.accessToken);
+      this.router.navigate(['/profile-details']);
     });
-
-     google.accounts.id.renderButton(
-      document.getElementById('googleBtn'),
-      { theme: 'outline', size: 'large' }
-    );
-     this.loginWithGoogle();
-   }
-   loginWithGoogle() {
-  google.accounts.id.prompt();
 }
 
-   handleCredential(res:any)
-   {
-        const id_token = res.credential
-        console.log(id_token);
-        
-        this.http.post(`${this.api.API_URL}/auth/google-register`,{id_token}).subscribe(res=>{
-          console.log('login sucess',res);
-          
-        })
-   }
-
+   
 }

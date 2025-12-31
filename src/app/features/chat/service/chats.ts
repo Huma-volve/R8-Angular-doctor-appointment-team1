@@ -48,10 +48,10 @@ export class Chats {
     const currentMessages = this.messagesSubject.value;
     this.messagesSubject.next([...currentMessages, message]);
   }
-  getCahtHistory(id: string) {
+  getCahtHistory(id: any) {
     return this._HttpClient.get(`conversations/${id}`);
   }
-  sendMessage(id: string, data: any) {
+  sendMessage(id: any, data: FormData) {
     return this._HttpClient.post(`conversations/${id}/messages`, data);
   }
 }

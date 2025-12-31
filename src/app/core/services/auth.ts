@@ -39,6 +39,7 @@ export class AuthService {
     return this.http.post(this.api.API_URL + '/auth/login', userData);
   }
 
+  // user profile page 
   getProfile()
   {
     return this.http.get(this.api.API_URL + '/profile/show');

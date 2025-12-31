@@ -9,7 +9,7 @@ export class Logout {
    private apiUrl = 'https://round8-backend-team-one.huma-volve.com/api/profile/logout'; // replace {{cure}} with your base URL
 
   constructor(private http: HttpClient) { }
-// new
+
   logout(): Observable<any> {
     const token = localStorage.getItem('token'); // assuming you store JWT token in localStorage
 

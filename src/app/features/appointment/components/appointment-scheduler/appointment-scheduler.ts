@@ -1,8 +1,9 @@
+import { AppointmentSuccessModalComponent } from './../../../modal/appointment-success-modal.component/appointment-success-modal.component';
 
 
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppointmentSuccessModalComponent } from '../../../modal/appointment-success-modal.component/appointment-success-modal.component';
+ 
 import { RouterLink } from '@angular/router';
 
 type DayItem = { label: string; day: number; date: Date };

@@ -1,11 +1,11 @@
+import { environment } from './../../../environment/environment';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { DocService } from '../dcard/service/doc-service';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment.development';
-
+ 
 
 @Component({
   selector: 'app-dmap',

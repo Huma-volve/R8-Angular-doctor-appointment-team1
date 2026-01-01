@@ -5,6 +5,6 @@ export interface Chat {
   sender_name: string;
   sender_avatar: string | null;
   body: string;
-  type: 'text' | 'image' | 'file' | 'audio' | 'video';
+  type: 'text' | 'image' | 'file';
   created_at: string; // ISO Date String
 }

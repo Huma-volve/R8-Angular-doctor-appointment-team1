@@ -7,7 +7,7 @@ import { DocService } from './service/doc-service';
   selector: 'app-dcard',
   imports: [CommonModule, RouterModule],
   templateUrl: './dcard.html',
-  styleUrl: './dcard.scss',
+  styleUrl: './dcard.css',
 })
 export class Dcard implements OnInit {
   allDoctors: any[] = []; // السطر دا علشان اعرض كل ال cards

@@ -12,7 +12,6 @@ import { Chats } from '../../service/chats';
 })
 export class ChatList {
 CoversationsList :any[] = []
-searchWord:string =''
 isFavourite: boolean = false
 isArchived: boolean = false
 chatTitle = ""

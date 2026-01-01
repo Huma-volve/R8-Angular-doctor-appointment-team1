@@ -1,41 +1,13 @@
 <div class="container-fluid p-0">
   <div class="chat-container p-3">
-    @for(msg of chat; track msg.id ){ @if(msg.type == 'text') {
+    @for(msg of chat; track msg.conversation_id ){
+
     <div class="d-flex mb-3 justify-content-end">
       <div class="message-bubble p-2 px-3 shadow-sm bg-light-gray text-dark patient-msg">
         {{ msg.body }}
       </div>
     </div>
-    } @else if(msg.type == 'image') {
-    <div class="d-flex mb-3 justify-content-end">
-      <div class="message-bubble p-2 px-3 shadow-sm bg-light-gray text-dark patient-msg">
-        <img
-          [src]="msg.body"
-          alt="image message"
-          class="img-fluid rounded"
-          style="max-width: 200px"
-        />
-      </div>
-    </div>
-    }@else if(msg.type == 'video') {
-    <div class="d-flex mb-3 justify-content-end">
-      <div class="d-flex mb-3 justify-content-center p-4">
-        <div class="message-bubble p-1 bg-light-gray">
-          <video [src]="msg.body" controls class="rounded" style="max-width: 250px"></video>
-        </div>
-      </div>
-    </div>
-    } @else if(msg.type == 'file') {
-    <div class="d-flex mb-3 justify-content-end">
-      <div class="message-bubble p-2 px-3 shadow-sm bg-light-gray text-dark patient-msg">
-        <a [href]="msg.body" target="_blank" class="text-decoration-none text-dark">
-          <i class="fas fa-file-alt"></i> View File
-        </a>
-      </div>
-    </div>
-    } @else if(msg.type === 'audio') {
-    <audio [src]="msg.body" controls style="max-width: 500px"></audio>
-    }}@empty {
+    }@empty {
     <div
       class="if-it-Free mx-auto d-flex justify-content-center align-items-center flex-column text-white p-5 rounded-4"
     >

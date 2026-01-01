@@ -1,0 +1,222 @@
+<div class="container d-flex justify-content-between pt-2 flex-shrink-0 ">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-2 d-flex">
+        <button type="submit"
+          class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-start rounded-end-0">
+          <i class="fa-solid fa-filter"></i>
+          <span>Filter</span>
+        </button>
+        <button (click)="toggleSidebar()" type="button"
+          class="btn btn-outline-secondary rounded-end rounded-start-0">&gt;</button>
+      </div>
+
+      <div class="col-8">
+        <form>
+          <input class="form-control" type="text" placeholder="Search Doctors" (input)="onSearch($event)" />
+        </form>
+      </div>
+
+      <div class="col-2">
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-2" routerLink="/dmap"
+          (click)="moveMe()">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Map</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <nav [class.sidebar-open]="isSidebarOpen" class="sidebar margin-set">
+      <div class="px-5 d-flex flex-column gap-4">
+        <div class="container">
+          <p>Available Date</p>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="day" id="flexRadioToday"
+              (change)="filterByAvailability('today')" value="today">
+            <label class="form-check-label" for="flexRadioToday">
+              Today
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="day" id="flexRadioTomorrow"
+              (change)="filterByAvailability('tomorrow')" value="tomorrow">
+            <label class="form-check-label" for="flexRadioTomorrow">
+              Tomorrow
+            </label>
+          </div>
+
+        </div>
+        <div class="container">
+          <p>Gender</p>
+          <div class="d-flex gap-3">
+            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+            <label class="btn btn-primary" for="option1">Male</label>
+
+            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+            <label class="btn  btn-outline-secondary" for="option2">Female</label>
+          </div>
+        </div>
+        <div class="container">
+          <p class="text-nowrap">Consultation Type</p>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="consultationType" id="flexRadioClinic" value="clinic">
+            <label class="form-check-label" for="flexRadioClinic">In-Clinic</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="consultationType" id="flexRadioHome" value="home">
+            <label class="form-check-label text-nowrap" for="flexRadioHome">Home Visit</label>
+          </div>
+        </div>
+        <div class="container">
+          <div class="dropdown w-100">
+            <button class="btn border-0 dropdown-toggle d-flex justify-content-between align-items-center 
+                           px-1 py-2 shadow-none focus-ring-0 w-100" type="button" data-bs-toggle="dropdown"
+              data-bs-auto-close="outside">
+              <span class="me-4">Sort</span>
+            </button>
+            <div class="container">
+              <ul class="dropdown-menu border-0 p-2 w-100">
+                <li class="form-check mb-3">
+                  <input class="form-check-input" type="radio" name="sortOption" id="opt1"
+                    (change)="sortDoctors('recommended')">
+                  <label class="form-check-label text-nowrap" for="opt1">
+                    Most recommended
+                  </label>
+                </li>
+                <li class="form-check mb-3">
+                  <input class="form-check-input" type="radio" name="sortOption" id="opt2"
+                    (change)="sortDoctors('priceLow')">
+                  <label class="form-check-label" for="opt2">
+                    Price low to high
+                  </label>
+                </li>
+                <li class="form-check mb-3">
+                  <input class="form-check-input" type="radio" name="sortOption" id="opt3"
+                    (change)="sortDoctors('priceHigh')">
+                  <label class="form-check-label" for="opt3">
+                    Price high to low
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div [class.content-shrink]="isSidebarOpen" class="content flex-grow-1 p-3">
+  <div class="container">
+    <div>
+      <p>Choose specialties</p>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+
+      <button class="btn btn-muted" (click)="scrollLeft()">
+        &lt;
+      </button>
+      <div #buttonsWrapper id="buttonsWrapper" class="d-flex flex-nowrap overflow-hidden gap-2 flex-grow-1"
+        style="scroll-behavior: smooth;">
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3" routerLink="/dcard/all"
+          (click)="getThemAll()">
+          <i class="fa-solid fa-user-doctor"></i>
+          <span>All</span>
+        </button>
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+          <i class="fa-solid fa-tooth"></i>
+          <span>Dentist</span>
+        </button>
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+          <i class="fa-solid fa-x-ray"></i>
+          <span>Radiologist</span>
+        </button>
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+          <i class="fa-solid fa-truck-medical"></i>
+          <span>Surgeon</span>
+        </button>
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+          <i class="fa-solid fa-heart-circle-bolt"></i>
+          <span>Cardiologist</span>
+        </button>
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+          <i class="fa-solid fa-hand-dots me-2"></i>
+          <span>Dermatologist</span>
+        </button>
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+          <i class="fa-solid fa-ear-listen"></i>
+          <span>ENT</span>
+        </button>
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+          <i class="fa-solid fa-brain"></i>
+          <span>Neurologist</span>
+        </button>
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+          <i class="fa-solid fa-stethoscope"></i>
+          <span>General Practitioner</span>
+        </button>
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+          <i class="fa-solid fa-eye"></i>
+          <span>Ophthalmologist</span>
+        </button>
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+          <i class="fa-solid fa-eye"></i>
+          <span>Ophthalmologist</span>
+        </button>
+        <button class="btn btn-outline-secondary d-flex align-items-center gap-2 rounded-3">
+          <i class="fa-solid fa-lungs"></i>
+          <span>Pulmonologist</span>
+        </button>
+      </div>
+      <button class="btn btn-muted" (click)="scrollRight()">
+        &gt;
+      </button>
+    </div>
+  </div>
+
+  <!-- Cards Section -->
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-12 mb-1 p-1" *ngFor="let doctor of doctors">
+        <div class="card h-100 border-0">
+          <div class="row g-0 align-items-center shadow p-1 rounded">
+            <div class="col-4">
+              <img [src]="doctor.profile_photo" class="img-fluid rounded-3 w-50" alt="image" />
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <h1 class="h4">{{doctor.name}}</h1>
+                <p class="card-text text-muted"> {{doctor.bio}} </p>
+                <div class="container d-flex g-1">
+                  <div class="me-4">
+                    <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                    <span class="text-dark">Rate </span>
+                  </div>
+                  <div>
+                    <i class="fa-regular fa-clock" style="color: #77797e;"></i>
+                    <span class="text-dark"> {{doctor.start_time}} </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="d-flex justify-content-between">
+              <div class="d-flex">
+                <span class="text-dark">Price </span>
+                <span class="text-muted">/hour</span>
+              </div>
+              <p class="text-danger">{{doctor.session_price | currency}}</p>
+            </div>
+            <button (click)="doneApp()" class="btn btn-primary w-100 rounded-6">Book an appointment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-outline-primary w-25 py-3 rounded-3">Next Page</button>
+    </div>
+  </div>
+</div>

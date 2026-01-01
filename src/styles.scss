@@ -1,12 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"');
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@100..900&display=swap');
-
-
-:root{
-    --Blue-Background-Color:#145DB8;
-    --primary-Font: "Noto Sans Georgian", sans-serif;
-    --secondary-Font: 'Montserrat', sans-serif;
-    --border-gray : #99A2AB
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }

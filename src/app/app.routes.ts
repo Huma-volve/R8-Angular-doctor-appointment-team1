@@ -1,17 +1,33 @@
-import { Chat } from './features/chat/pages/chat-layout/chat';
-import { ContactUs } from './features/contact-us/contact-us';
+import { ForgetPassword } from './features/auth/pages/forget-password/forget-password';
+import { EditPhone } from './features/auth/pages/edit-phone/edit-phone';
+import { authGuard } from './core/guards/auth-guard';
+import { ProfilePage } from './features/profile-page/profile-page';
+import { Otp } from './features/auth/pages/otp/otp';
+import { Register } from './features/auth/pages/register/register';
+import { Login } from './features/auth/pages/login/login';
+import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { Routes } from '@angular/router';
-
-
-
+import { Dcard } from './components/dcard/dcard';
+import { Dmap } from './components/dmap/dmap';
+import { Home } from './home/home';
+import { ProfilePopup } from './profile-popup/profile-popup';
+import { SettingPopup } from './setting-popup/setting-popup';
+import { Payment } from './payment/payment';
+import { PrivacyPolicy } from './privacy-policy/privacy-policy';
+import { AddNewCard } from './add-new-card/add-new-card';
+import { PasswordSetting } from './password-setting/password-setting';
+import { Notification } from './notification/notification';
 
 export const routes: Routes = [
-  {
-    path: 'chat',
-    component: Chat
-  },
-  {
-    path: 'contactUs',
-    component: ContactUs,
-  },
+    { path: 'dcard', component: Dcard },
+    { path: 'dmap', component: Dmap },
+    { path: 'dcard/all', component: Dcard },
+    { path: '', component: Home },
+    { path: 'notifications', component: Notification },
+    { path: 'profile-popup', component: ProfilePopup },
+    { path: 'setting-popup', component: SettingPopup },
+    { path: 'passwordsetting', component: PasswordSetting },
+    { path: 'payment', component: Payment },
+    { path: 'privacy-policy', component: PrivacyPolicy },
+    { path: 'add-new-card', component: AddNewCard }
 ];

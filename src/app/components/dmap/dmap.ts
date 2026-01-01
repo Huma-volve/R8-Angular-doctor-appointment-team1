@@ -40,7 +40,7 @@ export class Dmap implements OnInit {
   getAllDoctors() {
     const headers = new HttpHeaders({
       Authorization: `Bearer 125|tfeF5WypxyNzIdpylJrGjvhHOo5Op6xql2E0sfLhabde8fe0`
-    }); 
+    });
 
     return this.http.get(environment.baseUrl + `/api/doctors`, { headers }
     );

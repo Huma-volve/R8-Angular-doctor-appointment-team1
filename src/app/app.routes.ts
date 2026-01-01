@@ -1,4 +1,3 @@
-
 import { Routes } from '@angular/router';
 import { AppointmentPageComponent } from './features/appointment/pages/appointment-page/appointment-page';
 import { PaymentPageComponent } from './features/payment/payment-page.component/payment-page.component';

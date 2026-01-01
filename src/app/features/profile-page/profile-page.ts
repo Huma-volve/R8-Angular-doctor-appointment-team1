@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Auth } from './../../core/services/auth';
+import { AuthService } from './../../core/services/auth';
 import { userProfileReponse } from './../../core/models/user';
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class ProfilePage {
   avatarPreview: string | null = null;
   user: userProfileReponse | null = null;
-  auth = inject(Auth);
+  auth = inject(AuthService);
   router = inject(Router);
   serverErrors:string[] = [];
     loading:boolean  = false;

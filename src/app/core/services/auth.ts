@@ -2,12 +2,15 @@ import { Api } from './api';
 import { User, userLoginResponse } from './../models/user';
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
+
 @Injectable({
   providedIn: 'root',
 })
-export class Auth {
+export class AuthService {
   http = inject(HttpClient);
   api = inject(Api)
+  authGoogle = inject(Auth)
 
    private _token:string = localStorage.getItem('token') || '';
 
@@ -57,4 +60,9 @@ export class Auth {
       this._token = '';
       localStorage.removeItem('token');
    }
+
+     loginWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(this.authGoogle, provider);
+  }
 }

@@ -16,6 +16,7 @@ isFavourite: boolean = false
 isArchived: boolean = false
 chatTitle = ""
 mode:string = ''
+convesationId:string = ''
 constructor(private _Chat:Chats) { }
 
   ngOnInit(): void {

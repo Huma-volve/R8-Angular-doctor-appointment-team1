@@ -45,7 +45,7 @@ export class AuthService {
     return this.http.get(this.api.API_URL + '/profile/show');
   }
   editProfile(userData: any) {
-    return this.http.put(this.api.API_URL + '/profile/edit', userData);
+    return this.http.post(this.api.API_URL + '/profile/edit', userData);
   }
   // change password
   changePassword(passwordData: any) {

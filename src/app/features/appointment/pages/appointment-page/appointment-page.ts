@@ -1,5 +1,6 @@
-import { ReviewsSectionComponent } from './../../components/reviews-section/reviews-section';
-import { DoctorProfileCardComponent } from './../../components/doctor-profile-card/doctor-profile-card';
+import { RateReviewComponent } from './../../../Rate/rate-review.component/rate-review.component';
+
+ import { DoctorProfileCardComponent } from './../../components/doctor-profile-card/doctor-profile-card';
 import { AppointmentSchedulerComponent } from './../../components/appointment-scheduler/appointment-scheduler';
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,19 +9,19 @@ import { finalize } from 'rxjs';
 import { BookingApiService } from '../../booking-api.service';
 
 import { switchMap, map, filter, shareReplay } from 'rxjs';
+import { Doctors } from '../../../doctors/services/doctors';
+import { ReviewsSectionComponent } from "../../components/reviews-section/reviews-section";
 @Component({
   selector: 'app-appointment-page',
   standalone: true,
-  imports: [CommonModule, AppointmentSchedulerComponent, DoctorProfileCardComponent, ReviewsSectionComponent, RouterLink],
+  imports: [CommonModule, AppointmentSchedulerComponent, DoctorProfileCardComponent, ReviewsSectionComponent],
   templateUrl: './appointment-page.html',
   styleUrls: ['./appointment-page.scss'],
 })
-export class AppointmentPageComponent {
+export class AppointmentPage {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private bookingApi = inject(BookingApiService);
-    // private doctorsApi = inject(DoctorsApiService);
-
 
   doctorId = Number(this.route.snapshot.paramMap.get('doctorId'));
 

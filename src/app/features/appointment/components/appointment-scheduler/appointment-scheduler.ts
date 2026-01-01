@@ -1,8 +1,10 @@
+import { AppointmentSuccessModalComponent } from './../../../modal/appointment-success-modal.component/appointment-success-modal.component';
 
 
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppointmentSuccessModalComponent } from '../../../modal/appointment-success-modal.component/appointment-success-modal.component';
+ 
+import { RouterLink } from '@angular/router';
 
 type DayItem = { label: string; day: number; date: Date };
 type SlotItem = { id: string; label: string; available: boolean; time24: string };
@@ -10,7 +12,7 @@ type SlotItem = { id: string; label: string; available: boolean; time24: string 
 @Component({
   selector: 'app-appointment-scheduler',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './appointment-scheduler.html',
   styleUrls: ['./appointment-scheduler.scss'],
 })

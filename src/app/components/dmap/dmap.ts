@@ -1,11 +1,11 @@
+import { environment } from './../../../environment/environment';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { DocService } from '../dcard/service/doc-service';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment.development';
-
+ 
 
 @Component({
   selector: 'app-dmap',
@@ -40,7 +40,7 @@ export class Dmap implements OnInit {
   getAllDoctors() {
     const headers = new HttpHeaders({
       Authorization: `Bearer 125|tfeF5WypxyNzIdpylJrGjvhHOo5Op6xql2E0sfLhabde8fe0`
-    }); 
+    });
 
     return this.http.get(environment.baseUrl + `/api/doctors`, { headers }
     );

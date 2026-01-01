@@ -12,11 +12,11 @@ import { Chats } from '../../service/chats';
 })
 export class ChatList {
 CoversationsList :any[] = []
-searchWord:string =''
 isFavourite: boolean = false
 isArchived: boolean = false
 chatTitle = ""
 mode:string = ''
+convesationId:string = ''
 constructor(private _Chat:Chats) { }
 
   ngOnInit(): void {

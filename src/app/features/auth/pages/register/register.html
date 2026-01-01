@@ -1,0 +1,151 @@
+<section class="register-form">
+    
+  <app-form-header
+    [formTitle]="'Sign up'"
+    [formDesc]="'Please provide all information required to create your account'"
+  ></app-form-header>
+  <div class="content">
+    <form [formGroup]="registerForm" (submit)="registerUser()">
+      <div class="form-group">
+        <label for="Full Name" class="form-label">Full Name</label>
+        <input
+          type="text"
+          id="Full Name"
+          name="fullname"
+          placeholder="full name"
+          class="form-control"
+          formControlName="name"
+        />
+      </div>
+      @if(registerForm.get('name')?.touched) {
+        
+          @if(registerForm.get('name')?.errors?.['required']) {
+            <div class="text-danger pt-1 pb-1">Full Name is required.</div>
+          }
+          @if(registerForm.get('name')?.errors?.['server']) {
+            <div class="text-danger pt-1 pb-1">Full Name must be at least 3 characters long.</div>
+          }
+      }
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="email"
+          class="form-control"
+          formControlName="email"
+        />
+      </div>
+      @if(registerForm.get('email')?.touched) {
+        
+          @if(registerForm.get('email')?.errors?.['required']) {
+            <div class="text-danger pt-1 pb-1"> email is required.</div>
+          }
+          @if(registerForm.get('email')?.errors?.['server']) {
+            <div class="text-danger pt-1 pb-1">{{registerForm.get('email')?.errors?.['server']}}</div>
+          }
+      }
+       <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="password"
+          class="form-control"
+          formControlName="password"
+        />
+      </div>
+      @if(registerForm.get('password')?.touched) {
+        
+          @if(registerForm.get('password')?.errors?.['required']) {
+            <div class="text-danger pt-1 pb-1"> password is required.</div>
+          }
+          @if((registerForm.get('password')?.errors?.['server']) ) {
+            <div class="text-danger pt-1 pb-1">{{registerForm.get('password')?.errors?.['server']}}</div>
+            
+          }
+      }
+       <div class="form-group">
+        <label for="password_confirmation" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          id="password_confirmation"
+          name="password_confirmation"
+          placeholder="confirm password"
+          class="form-control"
+          formControlName="password_confirmation"
+        />
+      </div>
+     @if(registerForm.get('password_confirmation')?.touched) {
+        
+          @if(registerForm.get('password_confirmation')?.errors?.['required']) {
+            <div class="text-danger pt-1 pb-1"> password confirmation is required.</div>
+          }
+          @if(registerForm.get('password_confirmation')?.errors?.['server']) {
+            <div class="text-danger pt-1 pb-1">{{registerForm.get('password_confirmation')?.errors?.['server']}} 
+
+            </div>
+
+          }
+      }
+    
+      <div class="form-group">
+        <label for="phone" class="form-label">phone </label>
+            <div class="input-group mb-3 no-wrap">
+              <span class="input-group-text">
+                <img
+                  src="https://flagcdn.com/w20/eg.png"
+                  alt="EG"
+                  width="20"
+                  height="15"
+                  class="me-1"
+                />
+              </span>
+
+              <input
+              type="tel"
+          id="phone"
+          class="form-control"
+          placeholder="format must be +20XXXXXXXXXX"
+        
+          formControlName="phone"
+              />
+            </div>
+
+      </div>
+        @if(registerForm.get('phone')?.touched) {
+        
+          @if(registerForm.get('phone')?.errors?.['required']) {
+            <div class="text-danger pt-1 pb-1"> phone is required.</div>
+          }
+          @if(registerForm.get('phone')?.errors?.['server']) {
+            <div class="text-danger pt-1 pb-1">{{registerForm.get('phone')?.errors?.['server']}}</div>
+          }
+      }
+       <button class="btn btn-primary w-100" [disabled]="registerForm.invalid || loading">
+ 
+    @if (!loading) {
+      <span>Register</span>
+    }@else {
+      <span>
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      Loading...
+    </span>
+    }
+   
+  </button>
+     
+    </form>
+    <div class="or-divider mt-3 mb-3">
+      <span>or</span>
+    </div>
+  
+<app-google-login></app-google-login>
+    <p class="text-center pt-3">
+      Already have an account?
+      <a class="cursor-pointer text-decoration-none px-2" routerLink="/login">Login</a>
+    </p>
+  </div>
+</section>

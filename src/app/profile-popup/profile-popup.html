@@ -1,0 +1,73 @@
+<div class="overlay" (click)="close.emit()">
+  <div class="popup" (click)="$event.stopPropagation()">
+
+    <!-- Close -->
+    <button class="close-btn" (click)="close.emit()">×</button>
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <img src="assets/profile.jpg" alt="profile" />
+
+      <div class="profile-info">
+        <h3>Seif Mohamed</h3>
+        <p>129, El-Nasr Street, Cairo</p>
+      </div>
+
+      <i class="fa-solid fa-gear settings-icon"></i>
+    </div>
+
+    <!-- Menu -->
+    <ul class="menu">
+      <li (click)="goToPayment()">
+  <div class="left">
+    <i class="fa-regular fa-credit-card"></i>
+    <span>Payment Method</span>
+  </div>
+  <i class="fa-solid fa-chevron-right arrow"></i>
+</li>
+
+      <li>
+        <div class="left">
+          <i class="fa-regular fa-heart"></i>
+          <span>Favorite</span>
+        </div>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </li>
+
+      <li>
+        <button
+  class="settings-btn left"
+  (click)="goToSettings()"
+  aria-label="Settings">
+
+  <i class="fa-solid fa-gear settings-icon"></i>
+   <span>Settings</span>
+
+</button>
+  <i class="fa-solid fa-chevron-right arrow"></i>
+      </li>
+
+<li>
+  <button
+    class="settings-btn left"
+    (click)="goToPrivacyPolicy()"
+    aria-label="Privacy Policy">
+    <i class="fa-solid fa-lock"></i>
+    <span>Privacy Policy</span>
+  </button>
+  <i class="fa-solid fa-chevron-right arrow"></i>
+</li>
+
+      <li class="logout" (click)="logout()">
+  <div class="left">
+    <i class="fa-solid fa-right-from-bracket" style="color: red;"></i>
+    <span style="color: red;">Log out</span>
+  </div>
+</li>
+
+    </ul>
+
+  </div>
+</div>
+
+

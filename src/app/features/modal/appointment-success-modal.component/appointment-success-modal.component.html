@@ -1,0 +1,47 @@
+<div class="overlay">
+  <div class="modal-card">
+    <!-- Icon -->
+    <div class="icon-wrapper">
+      <div class="icon-circle">
+        <svg width="56" height="56" viewBox="0 0 24 24">
+          <path
+            d="M12 2L20 6V13C20 18 16.5 22 12 23C7.5 22 4 18 4 13V6L12 2Z"
+            fill="white"
+          />
+          <path
+            d="M9.5 12.5L11.2 14.2L15 10.5"
+            fill="none"
+            stroke="#2563EB"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Text -->
+    <h2>Congratulations!</h2>
+
+    <p>
+      Your appointment with <b>{{ doctorName }}</b><br />
+      is confirmed for <b>{{ date }}</b>, at<br />
+      <b>{{ time }}</b>.
+    </p>
+
+    <!-- Actions -->
+    <button class="done-btn" (click)="close()">Done</button>
+
+    <button class="edit-btn" (click)="editAppointment()">
+      Edit your appointment
+    </button>
+  </div>
+</div>
+<!-- <app-appointment-success-modal
+  *ngIf="showSuccess"
+  [doctorName]="doctor.name"
+  [date]="appointmentDate"
+  [time]="appointmentTime"
+  (done)="onDone()"
+  (edit)="onEdit()"
+></app-appointment-success-modal> -->

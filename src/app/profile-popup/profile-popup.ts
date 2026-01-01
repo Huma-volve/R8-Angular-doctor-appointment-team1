@@ -1,26 +1,52 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Auth1 } from '../core/services/auth1';
+import { Logout } from '../logout';
 
 @Component({
   selector: 'app-profile-popup',
-  imports: [],
+  standalone: true,
   templateUrl: './profile-popup.html',
-  styleUrl: './profile-popup.scss',
+  styleUrls: ['./profile-popup.scss'],
 })
-export class ProfilePopup {
-@Output() close = new EventEmitter<void>();
-  constructor(private router: Router) {}
+export class ProfilePopupComponent {
+  @Output() close = new EventEmitter<void>();
+
+  constructor(
+    private router: Router,
+     private authService: Auth1,
+     private logoutService:Logout
+  ) {}
+
+  logout() {
+    if (confirm('Are you sure you want to logout?')) {
+      this.logoutService.logout().subscribe({
+        next: (res) => {
+          console.log('Logged out:', res);
+          this.logoutService.clearSession();
+          this.router.navigate(['/login']); // redirect to login page
+        },
+        error: (err) => {
+          console.error('Logout failed:', err);
+          alert(err.error?.message || 'Logout failed!');
+        }
+      });
+    }
+  }
+  goToPayment() {
+    this.router.navigate(['/payment']);
+    this.close.emit();
+  }
 
   goToSettings() {
-    this.close.emit(); // close popup
-    this.router.navigate(['/setting-popup']); // navigate
+    this.router.navigate(['/setting-popup']);
+    this.close.emit();
   }
 
-    goToPayment() {
-    this.close.emit();             // close the popup first
-    this.router.navigate(['/payment']);  // navigate to PaymentComponent
-  }
-   goToPrivacyPolicy() {
+  goToPrivacyPolicy() {
     this.router.navigate(['/privacy-policy']);
+    this.close.emit();
   }
+
+
 }

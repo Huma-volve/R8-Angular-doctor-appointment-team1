@@ -1,24 +1,27 @@
 * {
-  font-family: Inter, system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  background: #f0f2f5;
 }
 
+/* Center container */
 .screen {
   min-height: 100vh;
-  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .container {
-  width: 390px;
-  padding: 20px;
-  position: relative;
+  width: 380px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
 /* Header */
@@ -26,56 +29,59 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .header h2 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
 }
 
-.header i {
-  font-size: 16px;
+.back-btn {
+  font-size: 18px;
   cursor: pointer;
 }
 
 /* Card Preview */
 .card-preview {
-  background: linear-gradient(135deg, #34b6b8, #0069c9, #004e99); /* Updated gradient for new background */
-  border-radius: 22px;
-  padding: 22px;
+  background: linear-gradient(135deg, #1f5cc4, #34b6b8);
   color: #fff;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
-  margin-bottom: 22px;
+  border-radius: 20px;
+  padding: 22px;
+  margin-bottom: 30px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.2);
 }
 
 .card-top {
   display: flex;
   justify-content: space-between;
   font-weight: 600;
+  font-size: 16px;
 }
 
 .visa {
-  font-size: 22px;
+  font-size: 24px;
   letter-spacing: 1px;
 }
 
 .card-number {
-  margin: 20px 0;
-  font-size: 18px;
-  letter-spacing: 2px;
+  margin: 25px 0;
+  font-size: 20px;
+  letter-spacing: 3px;
+  font-weight: 500;
 }
 
 .card-bottom {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-/* Form */
+/* Form Styling */
 .form label {
   font-size: 13px;
-  color: #8e8e93;
+  color: #555;
   margin-bottom: 6px;
   display: block;
 }
@@ -83,97 +89,40 @@ body {
 .form input {
   width: 100%;
   padding: 14px;
-  border-radius: 14px;
+  border-radius: 12px;
   border: none;
   background: #f2f2f7;
   font-size: 14px;
   margin-bottom: 16px;
   outline: none;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.input-icon {
-  position: relative;
-}
-
-.input-icon i {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #8e8e93;
-}
-
-.row {
-  display: flex;
-  gap: 14px;
-}
-
-.expiry {
-  display: flex;
-  gap: 8px;
-}
-
-.expiry input {
-  width: 60px;
-  text-align: center;
-}
-
-/* Floating Avatars */
-.avatars {
-  position: absolute;
-  right: 12px;
-  top: 55%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  color: #fff;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.green {
-  background: #4caf50;
-}
-
-.purple {
-  background: #9c27b0;
-}
-
-.teal {
-  background: #26c6da;
+.form input:focus {
+  background: #e1e5ea;
 }
 
 /* Save Button */
 .save-btn {
   width: 100%;
-  margin-top: 28px;
+  margin-top: 16px;
   padding: 14px;
-  border-radius: 14px;
+  border-radius: 12px;
   border: none;
   background: #1f5cc4;
   color: #fff;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(31, 92, 196, 0.4);
+  box-shadow: 0 8px 20px rgba(31, 92, 196, 0.3);
+  transition: all 0.2s ease;
+}
+
+.save-btn:hover {
+  background: #164aa0;
+  transform: translateY(-2px);
 }
 
 .save-btn:active {
   transform: scale(0.98);
-}
-.back-btn {
-  cursor: pointer;
-}
-
-.back-btn:active {
-  transform: scale(0.9);
 }

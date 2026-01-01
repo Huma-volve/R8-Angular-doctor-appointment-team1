@@ -65,6 +65,7 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+           
           "configurations": {
             "production": {
               "buildTarget": "doctor-appointment-team1:build:production"

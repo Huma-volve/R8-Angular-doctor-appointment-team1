@@ -1,17 +1,13 @@
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  rel="stylesheet"
-/>
-
 <div class="screen">
   <div class="container">
 
     <!-- Header -->
     <div class="header">
-     <i
-    class="fa-solid fa-chevron-left back-btn"
-    (click)="goBackToPayment()"
-  ></i>
+
+          <i
+  class="fa-solid fa-chevron-left back-btn"
+  (click)="goBackToPayment()"
+></i>
       <h2>Add New Card</h2>
     </div>
 
@@ -22,45 +18,29 @@
         <span class="visa">VISA</span>
       </div>
 
-      <div class="card-number">6789 4567 5432 8903</div>
+      <div class="card-number">
+        {{ card.last_four ? '**** **** **** ' + card.last_four : '**** **** **** 1234' }}
+      </div>
 
       <div class="card-bottom">
-        <span>Seif Mohamed</span>
-        <span>12/22</span>
+        <span>John Doe</span>
+        <span>{{ card.exp_month || 'MM' }}/{{ card.exp_year || 'YY' }}</span>
       </div>
     </div>
 
     <!-- Form -->
     <div class="form">
-      <label>Cardholder Name</label>
-      <input type="text" placeholder="Cardholder Name" />
+      <label>Card Number (Last 4)</label>
+      <input type="text" maxlength="4" [(ngModel)]="card.last_four" name="lastFour" />
 
-      <label>Card Number</label>
-      <div class="input-icon">
-        <input type="text" placeholder="Card Number" />
-        <i class="fa-regular fa-eye"></i>
-      </div>
+      <label>Expiry Month</label>
+      <input type="number" [(ngModel)]="card.exp_month" name="expMonth" />
 
-      <div class="row">
-        <div>
-          <label>Expiry Date</label>
-          <div class="expiry">
-            <input type="text" placeholder="02" />
-            <input type="text" placeholder="12" />
-          </div>
-        </div>
+      <label>Expiry Year</label>
+      <input type="number" [(ngModel)]="card.exp_year" name="expYear" />
 
-        <div>
-          <label>CVV Code</label>
-          <input type="text" placeholder="123" />
-        </div>
-      </div>
+      <button class="save-btn" type="button" (click)="saveCard()">Save</button>
     </div>
-
- 
-    <!-- Save Button -->
-    <button class="save-btn">Save</button>
 
   </div>
 </div>
-

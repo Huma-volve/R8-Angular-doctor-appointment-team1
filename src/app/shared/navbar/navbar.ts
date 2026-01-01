@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfilePopup } from "../../profile-popup/profile-popup";
+import { ProfilePopupComponent } from "../../profile-popup/profile-popup";
 import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-navbar',
-  imports: [ProfilePopup,CommonModule],
+  imports: [ProfilePopupComponent,CommonModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })
@@ -31,5 +31,15 @@ export class Navbar {
 
 toggleMenu() {
   this.showMenu = !this.showMenu;
+}
+
+goTohome(){
+  this.router.navigate(['/']);
+}
+goTobooking(){
+  this.router.navigate(['/booking']);
+}
+goTochat(){
+  this.router.navigate(['/chat']);
 }
 }

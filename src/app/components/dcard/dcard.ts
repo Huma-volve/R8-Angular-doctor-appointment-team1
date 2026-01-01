@@ -101,6 +101,14 @@ loadDoctors() {
   });
 }
 
+loadDoctorsAv(){
+  // this.docService.getDoctorsAv(1).subscribe({
+  //   next:(res:any) => {
+  //     console.log(res.data);
+  //   },
+  //   error: (err) => console.log(err)
+  // })
+}
 filterBySpecialty(specialtyName: string) {
   this.doctors = this.allDoctors.filter(
     doctor => doctor.specialty.name === specialtyName
@@ -143,15 +151,5 @@ filterByAvailability(day: 'today' | 'tomorrow') {
       behavior: 'smooth'
     });
   }
-
-doctorsGender = [
-  {name: 'Doctor 1', gender: 'male'},
-  {name: 'Doctor 1', gender: 'male'},
-  {name: 'Doctor 1', gender: 'male'},
-  {name: 'Doctor 1', gender: 'male'},
-  {name: 'Doctor 1', gender: 'male'}
-]
-
-
 }
 

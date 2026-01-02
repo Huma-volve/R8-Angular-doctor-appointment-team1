@@ -57,7 +57,7 @@
   </div> <!-- close content div -->
 
 
-  </div>
+
   <div class="map-card" (click)="goToSearch()">
     <div id="map"></div>
   </div>
@@ -71,7 +71,7 @@
         expertise, care, and service. Book with confidence today.
       </p>
     </div>
-    <button class="view-all" (click)="goToSearch()">View all</button>
+    <button class="view-all" (click)="goToSearch()">View All</button>
   </div>
   <div class="doctors">
     <div class="doctor-card" *ngFor="let doc of doctors">
@@ -89,12 +89,14 @@
             <strong>${{ doc.price }}</strong>
           </div>
           <button class="book" (click)="goToSearch()">
-            Book appointments
+            Book appointment
           </button>
         </div>
       </div>
     </div>
   </div>
+
+
 </section>
 <section class="reviews-section">
   <div class="container">
@@ -132,6 +134,8 @@
     </div>
   </div>
 </section>
+
+
 <section class="app-download-section">
   <div class="app-download-card">
     <div class="app-content">

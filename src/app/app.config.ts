@@ -5,7 +5,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
- 
+
 import { authInterceptor } from './core/interceptors/auth-interceptor';
 
 export const appConfig: ApplicationConfig = {
@@ -27,9 +27,9 @@ export const appConfig: ApplicationConfig = {
     ),
     provideAuth(() => getAuth())
 
-      withFetch(),
-      withInterceptors([authInterceptor]),
-      
-    )
+    //   withFetch(),
+    //   withInterceptors([authInterceptor]),
+
+    // )
   ]
 };

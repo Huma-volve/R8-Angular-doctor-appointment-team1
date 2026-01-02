@@ -14,10 +14,10 @@ export interface CreateBookingRequest {
 export interface Root {
   success: boolean
   message: string
-  data: Doctor
+  data: Data
 }
 
-export interface Doctor {
+export interface Data {
   id: number
   name: string
   email: string
@@ -50,9 +50,11 @@ export interface Location {
 export interface BookingResponse {
   data: { id: number };
 }
+
+
+
 @Injectable({ providedIn: 'root' })
 export class BookingApiService {
-
   private baseUrl = 'https://round8-backend-team-one.huma-volve.com';
 
   //  test
@@ -60,8 +62,8 @@ export class BookingApiService {
 
   constructor(private http: HttpClient) {}
 
-   getDoctorById(id: number): Observable<Doctor> {
-    return this.http.get<Doctor>(`${this.baseUrl}/api/doctors/${id}`);
+   getDoctorById(id: number): Observable<Data> {
+    return this.http.get<Data>(`${this.baseUrl}/api/doctors/${id}`);
    }
 
   createBooking(body: CreateBookingRequest): Observable<BookingResponse> {

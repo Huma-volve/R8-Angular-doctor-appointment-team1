@@ -12,4 +12,7 @@ export class PrivacyPolicy {
   goBack() {
     this.location.back();
   }
+  back(){
+this.location.back();
+  }
 }
